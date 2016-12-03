@@ -1,0 +1,9 @@
+services:
+#    client.example:
+#        class: ClientBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+
+parameters:
+    security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
+

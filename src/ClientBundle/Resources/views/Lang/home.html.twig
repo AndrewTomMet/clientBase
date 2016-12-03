@@ -1,0 +1,18 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients - lang
+{% endblock %}
+
+{% block content1 %}
+    <h2>Мови</h2>
+    {% for lang in langs %}
+        <a href="{{ path('lang_show', { 'id': lang.getId()}) }}">
+        <p>{{ lang.getName()}}</p></a>
+    {% endfor %}
+{% endblock %}
+
+{% block content2 %}
+    <input  type="button" id="BtnAddLang" class="btnadd"
+            onclick="window.location.href='{{path('lang_add')}}';return false;"
+            name=""value="Додати мову">
+{% endblock %}

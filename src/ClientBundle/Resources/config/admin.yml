@@ -1,0 +1,44 @@
+services:
+      client.admin.category:
+        class: ClientBundle\Admin\CategoryAdmin
+        arguments: [~, ClientBundle\Entity\Category, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Category }
+#        calls:
+#            - [ setTranslationDomain, [ClientBundle]]
+
+      client.admin.contact:
+        class: ClientBundle\Admin\ContactAdmin
+        arguments: [~, ClientBundle\Entity\Contact, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Contact }
+#        calls:
+#            - [ setTranslationDomain, [ClientBundle]]
+
+      client.admin.client:
+        class: ClientBundle\Admin\ClientAdmin
+        arguments: [~, ClientBundle\Entity\Client, ClientBundle:SonataAdminClient]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Client }
+        calls:
+            - [addChild, ['@client.admin.contact']]
+
+
+
+
+
+      client.admin.lang:
+        class: ClientBundle\Admin\LangAdmin
+        arguments: [~, ClientBundle\Entity\Lang, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Lang }
+#        calls:
+#            - [ setTranslationDomain, [ClientBundle]]
+
+      client.admin.contacttype:
+        class: ClientBundle\Admin\ContactTypeAdmin
+        arguments: [~, ClientBundle\Entity\ContactType, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: ContactType }
+#        calls:
+#            - [ setTranslationDomain, [ClientBundle]]

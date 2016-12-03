@@ -1,0 +1,17 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients - ContactType
+{% endblock %}
+
+{% block content1 %}
+<h2>Типи контактів</h2>
+    {% for contactType in contactTypes %}
+        <a href="{{ path('contacttype_show', { 'id': contactType.getId()}) }}">
+        <p>{{ contactType.getName()}}</p></a>
+    {% endfor %}
+{% endblock %}
+{% block content2 %}
+    <input  type="button" id="BtnAddContactType" class="btnadd"
+            onclick="window.location.href='{{path('contacttype_add')}}';return false;"
+            name=""value="Додати тип контакту">
+{% endblock %}

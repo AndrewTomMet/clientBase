@@ -1,0 +1,97 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+
+    encoders:
+      FOS\UserBundle\Model\UserInterface: bcrypt
+      Symfony\Component\Security\Core\User\User: bcrypt
+      Symfony\Component\Security\Core\User\AdvancedUserInterface: bcrypt
+
+    role_hierarchy:
+            ROLE_SONATA_READER:
+                - ROLE_ADMIN_CLIENT_READER
+                - ROLE_ADMIN_CATEGORY_READER
+                - ROLE_ADMIN_CLIENT_READER
+                - ROLE_ADMIN_CONTACT_READER
+                - ROLE_ADMIN_LANG_READER
+                - ROLE_ADMIN_CONTACTTYPE_READER
+
+            ROLE_SONATA_ADMIN:
+                - ROLE_ADMIN_CATEGORY_ALL
+                - ROLE_ADMIN_CLIENT_ALL
+                - ROLE_ADMIN_CONTACT_ALL
+                - ROLE_ADMIN_LANG_ALL
+                - ROLE_ADMIN_CONTACTTYPE_ALL
+
+
+            ROLE_USER:        [ROLE_SONATA_READER]
+            ROLE_STAFF:       [ROLE_USER]
+            ROLE_ADMIN:       [ROLE_STAFF, ROLE_SONATA_ADMIN]
+            ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+
+    providers:
+        in_memory:
+            memory:
+              users:
+                pig:
+                  password: $2y$12$uVCr8UJC7AL7ytWL8yKEWeh88UJGPU6hHui5b31j.8ou8W7da.w5u
+                  roles: 'ROLE_USER'
+                admin:
+                  password: $2y$12$Nk3Ak.lTNOZUF.BNpefELe8be1L56T9y5AnarFmxYbnjsZm7iJjOS
+                  roles: 'ROLE_ADMIN'
+
+        our_db_provider:
+            entity:
+              class: ClientBundle:User
+
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+
+
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+
+        main:
+            anonymous: ~
+#            http_basic: ~
+            pattern: ^/
+            form_login:
+                provider:     fos_userbundle
+                login_path:   /login
+                use_forward:  false
+                check_path:   /login_check
+                failure_path: null
+                csrf_token_generator: security.csrf.token_manager
+                #csrf_parameter: _some_t           # для заміни Input.name в формі
+                #csrf_token_id: pr_c_some_t        # для заміни authenticate в csrf_token('authenticate')
+
+            logout:       true
+            anonymous:    true
+#        secured_area:
+#            logout:
+#                path: /logout
+#                target: /
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/*, roles: ROLE_USER }
+
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html

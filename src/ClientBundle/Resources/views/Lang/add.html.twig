@@ -1,0 +1,12 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients - lang
+{% endblock %}
+
+{% block content1 %}
+    {{ form_start(form) }}
+    <br>
+    {{ form_row(form.name) }} <br>
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

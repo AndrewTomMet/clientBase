@@ -1,0 +1,28 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients
+{% endblock %}
+
+{% block content1 %}
+    {{ form_start(form) }}
+    <br>
+  {#  {{ form_row(form.created_at) }}#}
+    {{ form_row(form.firstname) }} <br>
+    {{ form_row(form.surname) }}<br>
+    {{ form_row(form.birthday) }}
+    {{ form_row(form.language) }}<br>
+    {{ form_row(form.newtypecontact) }}<br>
+    {{ form_row(form.newmeancontact) }}<br>
+    {{ form_row(form.addcontact) }} <br>
+    {{ form_row(form.contacts) }}<br><br><br><br><br>
+    {{ form_row(form.categories) }} <br><br><br><br><br>
+    {{ form_row(form.description) }} <br><br><br><br><br>
+    {#      #}
+    {{ form_row(form.Save) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block content2 %}
+
+{% endblock %}

@@ -1,0 +1,37 @@
+Firstname: І'мя :
+Category: Категорія
+Created at:	Дата додавання :
+Created At:	Дата додавання
+Surname:	Прізвище :
+Birthday:	дата народженя:
+Language:	мова :
+Language Name:	Мова
+Newtypecontact:	тип контакту:
+Newmeancontact:	контакт:
+Addcontact:	додати контакт
+Contacts:	контакти :
+Categories:	категорії :
+Description:	замітки:
+Save:	Зберегти
+Delete:	Видалити
+Name: Назва
+Get Display Name: Назва
+Go: Перейти
+
+Client: Кліенти
+Contact:	Контакти
+Lang: Мови
+ContactType: Типи контактів
+Client List: Список кліентів
+Client Create: Створити кліента
+Contact List:	Список контактів
+Contact Create:	Створити контакт
+Lang List:  Список мов
+Lang Create:  Створити мову
+Contact Type List:  Список типів контактів
+Contact Type Create: Створити тип контакта
+Category List:  Список категорії
+Category Create: Створити категорію
+Clients: Клієнти
+Type: Тип
+Mean: Значення

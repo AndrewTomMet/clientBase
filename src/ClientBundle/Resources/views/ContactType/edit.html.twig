@@ -1,0 +1,15 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients - lang
+{% endblock %}
+
+{% block content1 %}
+    <h2>Редагування типу контакта</h2>
+    {{ form_start(form) }}  <br>
+    {{ form_errors(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.Save) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}

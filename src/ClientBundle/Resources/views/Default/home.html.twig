@@ -1,0 +1,27 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients
+{% endblock %}
+
+{% block controll %}
+
+    <br>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block content1 %}
+
+    <h2>Клієнти</h2>
+    {% for client in clients %}
+        <a href="{{ path("client_show", { 'id': client.getId()}) }}">
+        <p>{{ client.getFirstName()}} {{client.getSurname()}}</p></a>
+    {% endfor %}
+{% endblock %}
+{% block content2 %}
+    <input  type="button" id="BtnAddClient" class="btnadd"
+            onclick="window.location.href='{{path('client_add')}}';return false;"
+            name=""value="Додати клієнта">
+{% endblock %}

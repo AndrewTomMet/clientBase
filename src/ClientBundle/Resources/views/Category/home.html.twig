@@ -1,0 +1,17 @@
+{% extends 'ClientBundle:Default:default.html.twig' %}
+{% block title %}
+    Clients - progect
+{% endblock %}
+
+{% block content1 %}
+    <h2>Категорії</h2>
+    {% for category in categories %}
+        <a href="{{ path('category_show', { 'id': category.getId()}) }}">
+        <p>{{ category.getName()}}</p></a>
+    {% endfor %}
+{% endblock %}
+{% block content2 %}
+    <input  type="button" id="BtnAddCtg" class="btnadd"
+            onclick="window.location.href='{{path('category_add')}}';return false;"
+            name=""value="Додати категорію">
+{% endblock %}
