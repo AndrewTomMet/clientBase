@@ -14,10 +14,6 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use ClientBundle\Entity\Lang;
 
-/**
- * Class LangAdmin
- * @package ClientBundle\Admin
- */
 class LangAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
@@ -35,10 +31,6 @@ class LangAdmin extends AbstractAdmin
         $listMapper->addIdentifier('name');
     }
 
-    /**
-     * @param mixed $object
-     * @return string
-     */
     public function toString($object)
     {
         return $object instanceof Lang

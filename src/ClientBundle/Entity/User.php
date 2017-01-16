@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use FOS\UserBundle\Model\User as BaseUser;
 
+
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\UserRepository")
@@ -19,13 +20,11 @@ class User extends BaseUser
      */
     protected $id;
 
-    /**
-     * User constructor.
-     */
     public function __construct()
     {
         parent::__construct();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid(null, true));
     }
+
 }

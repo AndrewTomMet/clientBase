@@ -1,34 +1,41 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
-    {% stylesheets '@ClientBundle/Resources/views/css/*' filter='cssrewrite' %}
+    {% stylesheets '@ClientBundle/Resources/public/css/*' debug=false filter='cssrewrite' %}
      <link rel="stylesheet" href="{{ asset_url }}" type="text/css" >
     {% endstylesheets %}
 {% endblock %}
 {% block header %}
-    <div id="PageHeader1" class="Header">
-        <input  type="button" id="BtnClient" onclick="window.location.href='{{path('client_home')}}';return false;"
-                name=""value="Клієнты">
+    <header>
 
-        <input type="button" id="BtnCategories" onclick="window.location.href='{{path('category_home')}}' ;return false;"
-               name="" value="Категорії">
-        <input type="button" id="BtnLangs" onclick="window.location.href='{{path('lang_home')}}';return false;"
-               name="" value="Мови">
-        <input type="button"
-               id="BtnContactType" onclick="window.location.href='{{path('contacttype_home')}}';return false;"
-               name="" value="Типи контактів">
-    </div>
+        <div id="PageHeader1">
+            <input  type="button" id="BtnClient" onclick="window.location.href='{{path('client_home')}}';return false;"
+                    name=""value="Клієнты">
+
+            <input type="button" id="BtnCategories" onclick="window.location.href='{{path('category_home')}}' ;return false;"
+                   name="" value="Категорії">
+            <input type="button" id="BtnLangs" onclick="window.location.href='{{path('lang_home')}}';return false;"
+                   name="" value="Мови">
+            <input type="button"
+                   id="BtnContactType" onclick="window.location.href='{{path('contacttype_home')}}';return false;"
+                   name="" value="Типи контактів">
+        </div>
+
+    </header>
 {% endblock %}
 
-{% block body %}
-    <div id="PageControll" class ="controll">
-    {% block controll %} {% endblock %}
-    </div>
-    <div id="PageContent1" class ="content">
-    {% block content1 %}{% endblock %}
-    </div>
+{% block content %}
+    <div id="Content" class="content">
+        <div id="PageControll" class ="controll">
+        {% block controll %} {% endblock %}
+        </div>
 
-    <div id="PageContent2" class ="content">
-        {% block content2 %} {% endblock %}
+        <div id="PageContent1">
+        {% block content1 %}{% endblock %}
+        </div>
     </div>
-
 {% endblock %}
+    {% block footer %}
+        <footer>
+        {% block footer1 %} {% endblock %}
+        </footer>
+    {% endblock %}

@@ -1,10 +1,9 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: Andrew
- * Date: 18.11.2016
- * Time: 8:59
+ * Date: 13.12.2016
+ * Time: 10:13
  */
 
 namespace ClientBundle\Form;
@@ -14,14 +13,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
-class CategoryForm extends AbstractType
+class SeacherForm extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name', TextType::class)
-            ->add('Save', SubmitType::class)
-        ;
+        $builder->add('searchtags', TextType::class, array('mapped'=>false))
+                ->add('Search', SubmitType::class);
     }
 
 }

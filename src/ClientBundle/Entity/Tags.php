@@ -1,40 +1,39 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 21.11.2016
- * Time: 10:02
- */
 
 namespace ClientBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Class ContactType
- * @package ClientBundle\Entity
- * @ORM\Entity(repositoryClass="ClientBundle\Repository\ContactTypeRepository")
- * @ORM\Table(name="contacttype")
- */
 
-class ContactType
+/**
+ * Tags
+ *
+ * @ORM\Table(name="tags")
+ * @ORM\Entity(repositoryClass="ClientBundle\Repository\TagsRepository")
+ */
+class Tags
 {
     /**
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
+
 
     /**
      * Get id
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -46,7 +45,7 @@ class ContactType
      *
      * @param string $name
      *
-     * @return ContactType
+     * @return Tags
      */
     public function setName($name)
     {
@@ -64,10 +63,5 @@ class ContactType
     {
         return $this->name;
     }
-
-    public function __toString()
-    {
-        return (string) $this->getName();
-    }
-
 }
+

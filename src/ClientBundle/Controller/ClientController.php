@@ -23,68 +23,88 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class ClientController extends Controller
 {
     /**
-     * @param int     $id
+     * @param $id
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id, Request $request)
     {
+
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
         $em = $this->getDoctrine()->getManager();
-        $client = $em->getRepository('ClientBundle:Client')->find($id);
+        $client = $em->find('ClientBundle:Client', $id);
+
         if (!$client) {
             throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $id));
-        } else {
+        }
+        else
+        {
             $form = $this->createForm(ClientForm::class, $client, array('id' => $client->getId()));
+            // перенести в вьюв
             if ($this->isGranted('ROLE_ADMIN')) {
                 $form->add('delete', SubmitType::class);
             }
 
             $form->handleRequest($request);
 
-            if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
+            if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid())
+            {
                 $client = $form->getData();
+
                 if ($this->isGranted('ROLE_ADMIN') && $form->get('delete')->isClicked()) {
-                    return $this->redirectToRoute('client_del', ['id' => $client->getId()]);
-                } elseif ($form->get('addcontact')->isClicked()) {
+                    return $this->redirectToRoute('client_del', array('id'=> $client->getId()));
+                }
+                else if ($form->get('addcontact')->isClicked())
+                {
                     $contact = new Contact();
                     $clientform = $request->request->get('client_form');
 
-                    $contactType = $em->getRepository('ClientBundle:ContactType')->find($clientform['newtypecontact']);
+
+                    $contactType = $em->find('ClientBundle:ContactType', $clientform['newtypecontact']);
                     if (!$contactType) {
                         throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientform['newtypecontact']));
                     } else {
+
                         $contact->setType($contactType);
                         $contact->setMean($clientform['newmeancontact']);
                         $client->addContact($contact);
-                        $contact->setClient($client);
                         $em->persist($contact);
-                        //$em->persist($client);
                         $em->flush();
                     }
                 } else {
-                    $em->flush();
 
+                    $em->flush();
                     return $this->redirectToRoute('client_home');
                 }
             }
 
-            return $this->render('ClientBundle:Default:edit.html.twig', ['form' => $form->createView(), 'client' => $client, ]);
+
+            return $this->render('ClientBundle:Default:edit.html.twig',
+                                 array( 'form' => $form->createView(), 'client' => $client));
         }
     }
 
-    /**
-     * @param Request $request
-     * @param string  $ctg
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
+    public function searchAction(Request $request)
+    {
+        $searcher =  $this->get('searcher');
+
+        $result = $searcher->search($request->request->get('serchtags'));
+        $em = $this->getDoctrine()->getRepository('ClientBundle:Client');
+
+        //$clients
+
+        //SeacherForm
+
+        return $this->render('ClientBundle:Default:home.html.twig');
+    }
+
     public function homeAction(Request $request, $ctg = '')
     {
-        $ctgRequest = $request->request->get('categories_form');
-        if ($ctgRequest != null && $ctgRequest['categories'] != '') {
-            $ctg = (integer) $ctgRequest['categories'];
+        $ctg_request = $request->request->get('categories_form');
+        if ($ctg_request != null && $ctg_request['categories'] != '') {
+            $ctg = (integer) $ctg_request['categories'];
         }
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('ClientBundle:Category')->findAll();
@@ -93,19 +113,17 @@ class ClientController extends Controller
         if (is_integer($ctg)) {
             $category = $em->getRepository('ClientBundle:Category')->find($ctg);
             $clients =  $category->getClients();
-
-            return $this->render('ClientBundle:Default:home.html.twig', ['form' => $form->createView(), 'clients' => $clients, ]);
+            return $this->render('ClientBundle:Default:home.html.twig', array('form' => $form->createView(),
+                                                                              'clients' => $clients));
         } else {
             $clients = $em->getRepository('ClientBundle:Client')->findAll();
-
-            return $this->render('ClientBundle:Default:home.html.twig', ['form' => $form->createView(), 'clients' => $clients, ]);
+            return $this->render('ClientBundle:Default:home.html.twig', array('form' => $form->createView(),
+                                                                              'clients' => $clients));
         }
+
     }
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
+
     public function addAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -117,10 +135,6 @@ class ClientController extends Controller
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $client = $form->getData();
 
-            $dt = date_create();
-            $dt->format('Y-m-d');
-            $client->setCreatedAt($dt);
-
             if ($form->get('addcontact')->isClicked()) {
                 $contact = new Contact();
                 $clientform = $request->request->get('client_form');
@@ -129,30 +143,28 @@ class ClientController extends Controller
                 if (!$contactType) {
                     throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientform['newtypecontact']));
                 } else {
+
                     $contact->setType($contactType);
                     $contact->setMean($clientform['newmeancontact']);
                     $client->addContact($contact);
-                    $contact->setClient($client);
+                    //$contact->setClient($client);
                     $em->persist($contact);
                     $em->persist($client);
                     $em->flush();
-
-                    return $this->redirectToRoute('client_show', array('id' => $client->getId(), ));
+                    return $this->redirectToRoute('client_show',array('id'=>$client->getId()));
                 }
             }
+
             $em->persist($client);
             $em->flush();
-
             return $this->redirectToRoute('client_home');
+
         }
 
-        return $this->render('ClientBundle:Default:edit.html.twig', ['form' => $form->createView(), 'client' => $client, ]);
+        return $this->render('ClientBundle:Default:edit.html.twig', array('form' => $form->createView(),
+            'client' => $client));
     }
 
-    /**
-     * @param int $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function delAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -160,16 +172,9 @@ class ClientController extends Controller
         if (!$client) {
             throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $id));
         } else {
-            $contacts = $em->getRepository('ClientBundle:Contact')->findBy(['client' => $client->getId(), ]);
-
-            foreach ($contacts as $contact) {
-                $client->removeContact($contact);
-                $em->remove($contact);
-            }
             $em->remove($client);
             $em->flush();
         }
-
         return $this->redirectToRoute('client_home');
     }
 }

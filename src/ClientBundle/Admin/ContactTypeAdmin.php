@@ -14,10 +14,6 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use ClientBundle\Entity\ContactType;
 
-/**
- * Class ContactTypeAdmin
- * @package ClientBundle\Admin
- */
 class ContactTypeAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
@@ -35,10 +31,6 @@ class ContactTypeAdmin extends AbstractAdmin
         $listMapper->addIdentifier('name');
     }
 
-    /**
-     * @param mixed $object
-     * @return string
-     */
     public function toString($object)
     {
         return $object instanceof ContactType
