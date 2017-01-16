@@ -23,10 +23,6 @@ services:
         calls:
             - [addChild, ['@client.admin.contact']]
 
-
-
-
-
       client.admin.lang:
         class: ClientBundle\Admin\LangAdmin
         arguments: [~, ClientBundle\Entity\Lang, ~]

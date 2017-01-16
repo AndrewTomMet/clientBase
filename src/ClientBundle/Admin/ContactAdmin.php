@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 28.11.2016
- * Time: 19:29
- */
 
 namespace ClientBundle\Admin;
 
@@ -21,9 +15,7 @@ class ContactAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('type', 'entity', array(
-                'class' => 'ClientBundle:ContactType',
-                'choice_label' => 'name'))
+            ->add('type', 'entity', ['class' => 'ClientBundle:ContactType', 'choice_label' => 'name', ])
             ->add('mean')
         /*
             ->add('client', 'entity', array(
@@ -38,18 +30,16 @@ class ContactAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('type', null, array(), 'entity', null, array('label' => 'Newtypecontact'))
-            ->add('mean', null, array(), 'text', null, array('label'=> 'Newmeancontact'))
-            ->add('client', null, array(), 'entity', null, array('class' => 'ClientBundle:Client',
-                                                                 'choice_label' => 'getDisplayName'))
+            ->add('type', null, array(), 'entity', null, ['label' => 'Newtypecontact'])
+            ->add('mean', null, array(), 'text', null, ['label' => 'Newmeancontact'])
+            ->add('client', null, array(), 'entity', null, ['class' => 'ClientBundle:Client', 'choice_label' => 'getDisplayName', ])
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
-        $listMapper->addIdentifier('getDisplayName', 'text', array(
-            'label' => 'Newmeancontact'))
-            ->add('client', 'entity', array('class' => 'ClientBundle:Client', 'choice_label' => 'getDisplayName'))
+        $listMapper->addIdentifier('getDisplayName', 'text', ['label' => 'Newmeancontact'])
+            ->add('client', 'entity', ['class' => 'ClientBundle:Client', 'choice_label' => 'getDisplayName'])
 
         ;
     }
