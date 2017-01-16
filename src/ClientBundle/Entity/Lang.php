@@ -16,7 +16,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\LangRepository")
  * @ORM\Table(name="languages")
  */
-
 class Lang
 {
     /**
@@ -68,7 +67,6 @@ class Lang
     /**
      * @return string
      */
-
     public function __toString()
     {
         return $this->name;

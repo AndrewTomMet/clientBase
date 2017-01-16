@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 22.11.2016
- * Time: 12:03
- */
 
 namespace ClientBundle\Entity;
 
@@ -133,6 +127,9 @@ class Contact
         return $this->type;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getDisplayName();

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 29.11.2016
- * Time: 16:38
- */
 
 namespace ClientBundle\Controller;
 
@@ -12,10 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Class SecurityController
+ * @package ClientBundle\Controller
+ */
 class SecurityController extends Controller
 {
     /**
+     * @param Request $request
      * @Route("/login", name="login")
+     * @return mixed
      */
     public function loginAction(Request $request)
     {
@@ -34,7 +34,9 @@ class SecurityController extends Controller
     }
 
     /**
+     * @param Request $request
      * @Route("/checklogin", name="checklogin")
+     * @return mixed
      */
     public function checkloginAction(Request $request)
     {
@@ -45,9 +47,10 @@ class SecurityController extends Controller
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->render('ClientBundle:Security:login.html.twig', array(
+
+        return $this->render('ClientBundle:Security:login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
-        ));
+        ]);
     }
 }

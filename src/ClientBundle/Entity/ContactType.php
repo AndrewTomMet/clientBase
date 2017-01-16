@@ -16,7 +16,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\ContactTypeRepository")
  * @ORM\Table(name="contacttype")
  */
-
 class ContactType
 {
     /**
@@ -65,6 +64,9 @@ class ContactType
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getName();

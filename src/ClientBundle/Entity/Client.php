@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 21.11.2016
- * Time: 10:02
- */
 
 namespace ClientBundle\Entity;
 
@@ -18,7 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\ClientRepository")
  * @ORM\Table(name="client")
  */
-
 class Client
 {
     /**
