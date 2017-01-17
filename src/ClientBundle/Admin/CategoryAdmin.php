@@ -15,11 +15,11 @@ class CategoryAdmin extends AbstractAdmin
     {
         $formMapper
             ->add('name', 'text')
-            ->add('clients', 'entity', array(
+            ->add('clients', 'entity', [
                 'class' => 'ClientBundle:Client',
                 'choice_label' => 'DisplayName',
                 'multiple' => true,
-            ))
+            ])
         ;
     }
 

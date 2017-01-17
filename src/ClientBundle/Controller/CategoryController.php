@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 21.11.2016
- * Time: 11:23
- */
 
 namespace ClientBundle\Controller;
 
@@ -25,26 +19,26 @@ class CategoryController extends Controller
             throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $id));
         }
 
-            $form = $this->createForm(CategoryForm::class, $category);
-            if ($this->isGranted('ROLE_ADMIN')) {
-                $form->add('delete', SubmitType::class);
+        $form = $this->createForm(CategoryForm::class, $category);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $form->add('delete', SubmitType::class);
+        }
+
+        $form->handleRequest($request);
+
+        if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
+            $category = $form->getData();
+            if ($this->isGranted('ROLE_ADMIN') && $form->get('delete')->isClicked()) {
+                return $this->redirectToRoute('category_del', array('id'=> $category->getId()));
             }
-
-            $form->handleRequest($request);
-
-            if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
-                $category = $form->getData();
-                if ($this->isGranted('ROLE_ADMIN') && $form->get('delete')->isClicked()) {
-                    return $this->redirectToRoute('category_del', array('id'=> $category->getId()));
-                }
-                //$em->persist($category);
-                $em->flush();
-                return $this->redirectToRoute('category_home');
-            }
+            //$em->persist($category);
+            $em->flush();
+            return $this->redirectToRoute('category_home');
+        }
 
 
-            return $this->render('ClientBundle:Category:edit.html.twig', array(
-                'form' => $form->createView(), 'category' => $category));
+        return $this->render('ClientBundle:Category:edit.html.twig', array(
+            'form' => $form->createView(), 'category' => $category));
 
     }
 
