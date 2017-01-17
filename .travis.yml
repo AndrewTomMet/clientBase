@@ -16,10 +16,10 @@ install:
 
 before_script:
   - cp app/config/parameters.yml.dist app/config/parameters.yml
-  - bin/console doctrine:database:create --env=test --no-interaction --quiet
-  - bin/console doctrine:schema:create --env=test --no-interaction --quiet
-  - bin/console doctrine:fixtures:load --no-interaction --env=test --no-interaction --quiet
-  - bin/console cache:warmup --env=test --quiet
+  - php bin/console doctrine:database:create --env=test --no-interaction --quiet
+  - php bin/console doctrine:schema:create --env=test --no-interaction --quiet
+  - php bin/console doctrine:fixtures:load --no-interaction --env=test --no-interaction --quiet
+  - php bin/console cache:warmup --env=test --quiet
 
 script: phpunit -c app/
 
