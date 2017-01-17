@@ -14,6 +14,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use ClientBundle\Entity\ContactType;
 
+/**
+ * Class ContactTypeAdmin
+ */
 class ContactTypeAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)

@@ -24,17 +24,14 @@ class TagsController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $tags = $em->getRepository('ClientBundle:Tags')->findAll();
 
-        return $this->render('ClientBundle:tags/index.html.twig', array(
-            'tags' => $tags,
-        ));
+        return $this->render('ClientBundle:tags/index.html.twig', ['tags' => $tags]);
     }
 
     /**
      * Creates a new tag entity.
-     *
+     * @param Request $request
      * @Route("/new", name="tags_new")
      * @Method({"GET", "POST"})
      */
@@ -49,13 +46,13 @@ class TagsController extends Controller
             $em->persist($tag);
             $em->flush($tag);
 
-            return $this->redirectToRoute('tags_show', array('id' => $tag->getId()));
+            return $this->redirectToRoute('tags_show', ['id' => $tag->getId()]);
         }
 
-        return $this->render('ClientBundle:tags/new.html.twig', array(
+        return $this->render('ClientBundle:tags/new.html.twig', [
             'tag' => $tag,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -68,10 +65,10 @@ class TagsController extends Controller
     {
         $deleteForm = $this->createDeleteForm($tag);
 
-        return $this->render('ClientBundle:tags/show.html.twig', array(
+        return $this->render('ClientBundle:tags/show.html.twig', [
             'tag' => $tag,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -89,14 +86,14 @@ class TagsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('tags_edit', array('id' => $tag->getId()));
+            return $this->redirectToRoute('tags_edit', ['id' => $tag->getId()]);
         }
 
-        return $this->render('ClientBundle:tags/edit.html.twig', array(
+        return $this->render('ClientBundle:tags/edit.html.twig', [
             'tag' => $tag,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -129,7 +126,7 @@ class TagsController extends Controller
     private function createDeleteForm(Tags $tag)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('tags_delete', array('id' => $tag->getId())))
+            ->setAction($this->generateUrl('tags_delete', ['id' => $tag->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;

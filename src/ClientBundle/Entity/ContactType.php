@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 21.11.2016
- * Time: 10:02
- */
 
 namespace ClientBundle\Entity;
 
@@ -16,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\ContactTypeRepository")
  * @ORM\Table(name="contacttype")
  */
-
 class ContactType
 {
     /**
@@ -65,6 +58,9 @@ class ContactType
         return $this->name;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return (string) $this->getName();

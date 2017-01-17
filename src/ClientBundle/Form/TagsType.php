@@ -6,6 +6,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class TagsType
+ */
 class TagsType extends AbstractType
 {
     /**
@@ -15,15 +18,13 @@ class TagsType extends AbstractType
     {
         $builder->add('name')        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'ClientBundle\Entity\Tags'
-        ));
+        $resolver->setDefaults(['data_class' => 'ClientBundle\Entity\Tags']);
     }
 
     /**
@@ -33,6 +34,5 @@ class TagsType extends AbstractType
     {
         return 'clientbundle_tags';
     }
-
-
 }
+

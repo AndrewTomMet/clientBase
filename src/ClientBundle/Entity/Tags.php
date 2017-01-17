@@ -4,7 +4,6 @@ namespace ClientBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
 /**
  * Tags
  *

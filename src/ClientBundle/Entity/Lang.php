@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 21.11.2016
- * Time: 10:02
- */
 
 namespace ClientBundle\Entity;
 
@@ -16,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\LangRepository")
  * @ORM\Table(name="languages")
  */
-
 class Lang
 {
     /**
@@ -68,7 +61,6 @@ class Lang
     /**
      * @return string
      */
-
     public function __toString()
     {
         return $this->name;

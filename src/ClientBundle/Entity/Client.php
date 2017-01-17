@@ -1,17 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 21.11.2016
- * Time: 10:02
- */
 
 namespace ClientBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
 
 /**
  * Class Client

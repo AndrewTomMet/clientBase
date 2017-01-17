@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 29.11.2016
- * Time: 16:38
- */
 
 namespace ClientBundle\Controller;
 
@@ -12,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+/**
+ * Class SecurityController
+ */
 class SecurityController extends Controller
 {
     /**
@@ -45,9 +42,10 @@ class SecurityController extends Controller
 
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        return $this->render('ClientBundle:Security:login.html.twig', array(
+
+        return $this->render('ClientBundle:Security:login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
-        ));
+        ]);
     }
 }
