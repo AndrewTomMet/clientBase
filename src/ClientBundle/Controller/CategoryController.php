@@ -98,7 +98,6 @@ class CategoryController extends Controller
 
         return $this->redirectToRoute('category_home');
     }
-
 }
 //php bin/console doctrine:database:create
 //php bin/console doctrine:schema:update --force
