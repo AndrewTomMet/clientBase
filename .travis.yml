@@ -1,10 +1,16 @@
 language: php
 php:
-- 5.4
-- 5.5
+
 - 5.6
 
-script: phpunit --coverage-text
+before_script:
+  - composer install
+  - bin/console doctrine:database:create --env=test > /dev/null
+  - bin/console doctrine:schema:create --env=test > /dev/null
+  - bin/console doctrine:fixtures:load --no-interaction --env=test > /dev/null
+  - bin/console cache:warmup --env=test > /dev/null
+
+script: phpunit -c app/
 
 #script: phpunit Test.php
 
