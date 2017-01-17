@@ -8,17 +8,19 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use ClientBundle\Entity\Category;
 
-/**
- * Class CategoryAdmin
- * @package ClientBundle\Admin
- */
+
 class CategoryAdmin extends AbstractAdmin
 {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
             ->add('name', 'text')
-            ->add('clients', 'entity', ['class' => 'ClientBundle:Client', 'choice_label' => 'DisplayName', 'multiple' => true, ]);
+            ->add('clients', 'entity', array(
+                'class' => 'ClientBundle:Client',
+                'choice_label' => 'DisplayName',
+                'multiple' => true,
+            ))
+        ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -31,10 +33,6 @@ class CategoryAdmin extends AbstractAdmin
         $listMapper->addIdentifier('name');
     }
 
-    /**
-     * @param mixed $object
-     * @return string
-     */
     public function toString($object)
     {
         return $object instanceof Category

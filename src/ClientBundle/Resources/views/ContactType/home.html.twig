@@ -10,7 +10,8 @@
         <p>{{ contactType.getName()}}</p></a>
     {% endfor %}
 {% endblock %}
-{% block content2 %}
+
+{% block footer1 %}
     <input  type="button" id="BtnAddContactType" class="btnadd"
             onclick="window.location.href='{{path('contacttype_add')}}';return false;"
             name=""value="Додати тип контакту">

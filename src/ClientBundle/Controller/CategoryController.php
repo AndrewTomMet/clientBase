@@ -14,17 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-/**
- * Class CategoryController
- * @package ClientBundle\Controller
- */
 class CategoryController extends Controller
 {
-    /**
-     * @param $id
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
     public function showAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -34,42 +25,37 @@ class CategoryController extends Controller
             throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $id));
         }
 
-        $form = $this->createForm(CategoryForm::class, $category);
-        if ($this->isGranted('ROLE_ADMIN')) {
-            $form->add('delete', SubmitType::class);
-        }
-
-        $form->handleRequest($request);
-
-        if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
-            $category = $form->getData();
-            if ($this->isGranted('ROLE_ADMIN') && $form->get('delete')->isClicked()) {
-                return $this->redirectToRoute('category_del', array('id' => $category->getId()));
+            $form = $this->createForm(CategoryForm::class, $category);
+            if ($this->isGranted('ROLE_ADMIN')) {
+                $form->add('delete', SubmitType::class);
             }
-            //$em->persist($category);
-            $em->flush();
 
-            return $this->redirectToRoute('category_home');
-        }
+            $form->handleRequest($request);
 
-        return $this->render('ClientBundle:Category:edit.html.twig', ['form' => $form->createView(), 'category' => $category, ]);
+            if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
+                $category = $form->getData();
+                if ($this->isGranted('ROLE_ADMIN') && $form->get('delete')->isClicked()) {
+                    return $this->redirectToRoute('category_del', array('id'=> $category->getId()));
+                }
+                //$em->persist($category);
+                $em->flush();
+                return $this->redirectToRoute('category_home');
+            }
+
+
+            return $this->render('ClientBundle:Category:edit.html.twig', array(
+                'form' => $form->createView(), 'category' => $category));
+
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
+
     public function homeAction()
     {
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('ClientBundle:Category')->findAll();
-
         return $this->render('ClientBundle:Category:home.html.twig', array('categories' => $categories));
     }
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
     public function addAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -82,17 +68,12 @@ class CategoryController extends Controller
             $category = $form->getData();
             $em->persist($category);
             $em->flush();
-
             return $this->redirectToRoute('category_home');
         }
-
-        return $this->render('ClientBundle:Category:edit.html.twig', ['form' => $form->createView(), 'category' => $category, ]);
+        return $this->render('ClientBundle:Category:edit.html.twig', array('form' => $form->createView(),
+            'category' => $category));
     }
 
-    /**
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
     public function delAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -103,7 +84,6 @@ class CategoryController extends Controller
             $em->remove($category);
             $em->flush();
         }
-
         return $this->redirectToRoute('category_home');
     }
 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew
+ * Date: 21.11.2016
+ * Time: 10:02
+ */
 
 namespace ClientBundle\Entity;
 
@@ -6,12 +12,15 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * Class Client
  * @package ClientBundle\Entity
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\ClientRepository")
  * @ORM\Table(name="client")
+ * @ORM\HasLifecycleCallbacks
  */
+
 class Client
 {
     /**
@@ -43,15 +52,10 @@ class Client
     private $created_at;
 
     /**
-     * @ORM\OneToMany(targetEntity="Contact", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="Contact", mappedBy="client", cascade={"remove"})
      */
     private $contacts;
 
-   /* /**
-     * @ORM\Column(type="boolean")
-
-    private $workedWithUs;
-*/
     /**
      * @ORM\ManyToMany(targetEntity="Category", inversedBy="clients")
      * @ORM\JoinTable(name="client_category")
@@ -68,6 +72,10 @@ class Client
      */
     private $description;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $tags;
 
     /**
      * Constructor
@@ -86,6 +94,30 @@ class Client
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get tags
+     *
+     * @return array
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Set tags
+     *
+     * @param array $tags
+     *
+     * @return Client
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
     }
 
     /**
@@ -184,10 +216,11 @@ class Client
      * @param \DateTime $createdAt
      *
      * @return Client
+     * @ORM\PrePersist
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->created_at = $createdAt;
+        $this->created_at = new \DateTime('now');
 
         return $this;
     }
@@ -235,6 +268,7 @@ class Client
      */
     public function addContact(\ClientBundle\Entity\Contact $contact)
     {
+        $contact->setClient($this);
         $this->contacts[] = $contact;
 
         return $this;

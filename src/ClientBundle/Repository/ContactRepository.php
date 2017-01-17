@@ -10,10 +10,7 @@ namespace ClientBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-/**
- * Class ContactRepository
- * @package ClientBundle\Repository
- */
 class ContactRepository  extends EntityRepository
 {
+
 }

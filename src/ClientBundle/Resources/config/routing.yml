@@ -1,21 +1,22 @@
 
-# Client and main part
+# Client main part
 
 client_home:
     path: /
     defaults: { _controller: ClientBundle:Client:home}
 
 client_show:
-    path: /{_locale}/client_show/{id}
-    defaults: { _controller: ClientBundle:Client:show, _locale: uk}
+    path: /client_show/{id}
+    defaults: { _controller: ClientBundle:Client:show}
     requirements:
               id: \d+
-              _locale: en|uk
-
-
 client_show_other:
     path: /client_show/{other}
     defaults: { _controller: ClientBundle:Client:home}
+
+client_search:
+    path: /client_search/
+    defaults: { _controller: ClientBundle:Client:search}
 
 client_add:
     path: /client_add

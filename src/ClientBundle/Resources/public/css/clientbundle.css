@@ -1,0 +1,244 @@
+body
+{
+    background-color: #b7bebe;
+}
+
+
+header
+{
+    position        : fixed;
+    top             : 0;
+    left            : 0;
+    height          :70px;
+    width           :100%;
+    z-index         :5;
+    float: left;
+}
+
+.content
+{
+    position        : fixed;
+    top             : 71px;
+    bottom          : 51px;
+    left            : 0;
+    width           : 100%;
+    background-color: #938b1a;
+    overflow        : auto;
+}
+
+h2 {
+    margin: 5px;
+}
+
+.clientName {
+    width: 500px;
+    height: 20px;
+    border: 1px solid #e38d13;
+    background-color: #5c7a9d;
+    margin: 5px;
+    padding: 5px;
+}
+
+.clientName a {
+    text-decoration : none;
+    color           : #d5dcdc;
+}
+
+.clientName a:hover {
+    color: yellow;
+}
+
+footer
+{
+    position        : fixed;
+    bottom          : 0px;
+    left            : 0px;
+    height          : 50px;
+    width           : 100%;
+    background-color: #5c7a9d;
+    z-index         :5;
+
+}
+
+#PageHeader1{
+    /* position        : absolute;
+     left            :0;
+     top             :0;*/
+     width           :inherit;
+     height          :inherit;
+
+    background-color: #5c7a9d;
+}
+
+#PageControll{
+    /*  position        :fixed;
+      text-align      :left;
+      left            :0;
+      top             :70px;*/
+    display: none;
+    padding-left: 5px;
+    height          :60px;
+    background-color: #5c7a9d;
+}
+
+#BtnClient, #BtnCategories, #BtnLangs, #BtnContactType
+{
+    position        :absolute;
+    top             :23px;
+    width           :100px;
+    height          :25px;
+}
+
+#BtnClient
+{
+    left:22px;
+    width:150px;
+}
+#BtnCategories  { left    :334px;}
+#BtnLangs       { left    :450px;}
+#BtnContactType { left    :562px;}
+
+#PageContent1
+{
+  /*  position        :absolute;*/
+    padding         : 5px 5px 5px 10px;
+    /*top             :0px;
+    left            :0px;
+    bottom          :10%;*/
+    width           : calc(100% - 15px);
+   /* height          :100% ;*/
+    background-color: #3a9d49;
+    overflow: hidden;
+
+}
+/*
+#PageContent2
+{
+    position        :relative;
+    bottom          : 0;
+    left            : 0;
+    height          :60px;
+    width           :100%;
+    z-index         :2;
+
+}
+*/
+.block1{
+    position        :relative;
+ /*   display         : block;*/
+    height: 120px;
+    margin-bottom: 5px;
+
+}
+.categories{
+    position        : inherit;
+    display         : inline-block ;
+    left            : 115px;
+    width           : 300px;
+}
+
+.tags{
+    position        :relative;
+    width           : 600px;
+}
+
+form div {
+    margin: 10px 0px 10px 0px;
+}
+
+#client_form_created_at, #client_form_birthday
+{
+    position        :relative;
+    top             :-23px ;
+    left            :115px;
+}
+
+#client_form_created_at_day, #client_form_birthday_day,
+#client_form_created_at_month, #client_form_birthday_month
+{
+    width: 25px;
+}
+
+#client_form_created_at_year, #client_form_birthday_year
+
+{
+    width: 40px;
+}
+
+#client_form_firstname, #client_form_surname,
+#client_form_language,
+#client_form_newtypecontact, #client_form_newmeancontact,
+#lang_form_name, #contact_type_form_name,
+#category_form_name,
+#categories_form_categories,
+#client_form_tags
+{
+    position        :absolute;
+    left            :115px;
+    width           :300px;
+}
+
+#client_form_tags
+{
+    width           :600px;
+}
+
+.description{
+    position        : relative;
+    height          : 120px ;
+}
+
+#client_form_contacts, #client_form_categories
+{
+    width           :300px;
+    height          :100px ;
+}
+
+#client_form_description {
+    height          : 100px;
+    left            : 115px;
+    width           : 600px;
+}
+
+#client_form_addcontact
+{
+    position        :relative;
+    left            :115px;
+    height          :25px;
+    width           :150px;
+}
+
+#categories_form_go
+{
+    position        :relative;
+    top             : -20px;
+    left            :425px;
+    height          :25px;
+    width           :150px;
+}
+
+#client_form_Save, #lang_form_Save,
+#contact_type_form_Save,
+#category_form_Save,
+
+.btnadd
+{
+    position        : relative;
+    top             : 15px;
+    left            : 10px;
+    height          : 25px;
+    width           : 150px;
+}
+
+
+
+#client_form_delete, #lang_form_delete,
+#contact_type_form_delete, #category_form_delete
+{
+    position        : relative;
+    top             : -10px;
+    left            : 215px;
+    height          : 25px;
+    width           : 150px;
+    z-index         : 5;
+}

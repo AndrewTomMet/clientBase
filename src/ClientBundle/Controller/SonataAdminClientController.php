@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Andrew
+ * Date: 01.12.2016
+ * Time: 13:14
+ */
 
 namespace ClientBundle\Controller;
 
@@ -7,10 +13,6 @@ use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-/**
- * Class SonataAdminClientController
- * @package ClientBundle\Controller
- */
 class SonataAdminClientController extends CRUDController
 {
     private function updateContacts(Request $request, $object)
@@ -22,32 +24,33 @@ class SonataAdminClientController extends CRUDController
             $arr1 = $arr;
             break;
         }
-        $tmpTest = '';
+        $tmptest = '';
+
 
         if ($postData) {
-            $oldContacts = null;
-            $newContacts = null;
-            $oldContacts = $object->getContacts();
+            $old_contacts = null;
+            $new_contacts = null;
+            $old_contacts = $object->getContacts();
             $em = $this->getDoctrine()->getManager();
             if (array_key_exists("contacts", $arr1)) {
-                $newContacts = $arr1["contacts"];
+                $new_contacts = $arr1["contacts"];
 
                 // Викидуем з массива нових контактів, які прийшли з POST, ті що вже були
                 // і видаляем з бази контакти які видалені у клієнта
-                foreach ($oldContacts as $contact) {
-                    $k = array_search($contact->getId(), $newContacts);
-                    if (false === $k) {
+                foreach ($old_contacts as $contact) {
+                    $k = array_search($contact->getId(), $new_contacts);
+                    if ($k === false) {
                         $object->removeContact($contact);
                         $em->remove($contact);
                     } else {
-                        unset($newContacts[$k]);
+                        unset($new_contacts[$k]);
                     }
                 }
 
-                foreach ($newContacts as $contactId) {
-                    $contact = $em->getRepository('ClientBundle:Contact')->find($contactId);
+                foreach ($new_contacts as $contact_id) {
+                    $contact = $em->getRepository('ClientBundle:Contact')->find($contact_id);
                     if (!$contact) {
-                        throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $contactId));
+                        throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $contact_id));
                     } else {
                         $object->addContact($contact);
                         $contact->setClient($object);
@@ -55,55 +58,40 @@ class SonataAdminClientController extends CRUDController
                 }
             } else {
                 // Post прийшов без контактів - видаляем всі контакти клієнта
-                foreach ($oldContacts as $contact) {
+                foreach ($old_contacts as $contact) {
                     $object->removeContact($contact);
                     $em->remove($contact);
                 }
             }
         }
 
-        if ('' === $tmpTest) {
+        if ($tmptest == '') {
             return null;
         } else {
-            return new Response($tmpTest);
+            return new Response($tmptest);
         }
     }
 
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null|Response
-     */
+
     public function preCreate(Request $request, $object)
     {
         parent::preCreate($request, $object);
-        $dt = date_create();
-        $dt->format('Y-m-d');
-        $object->setCreatedAt($dt);
-
+      //  $dt = date_create();
+      //  $dt->format('Y-m-d');
+      //  $object->setCreatedAt($dt);
         return $this->updateContacts($request, $object);
     }
 
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null|Response
-     */
-    public function preEdit(Request $request, $object)
+    public function preEdit( Request $request, $object)
     {
         parent::preEdit($request, $object);
-
         return $this->updateContacts($request, $object);
     }
 
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null
-     */
     public function preDelete(Request $request, $object)
     {
         parent::preDelete($request, $object);
+        /*
         $em = $this->getDoctrine()->getManager();
 
         $contacts = $object->getContacts();
@@ -111,17 +99,8 @@ class SonataAdminClientController extends CRUDController
             $object->removeContact($contact);
             $em->remove($contact);
         }
+        */
         //$em->flush();
         return null;
-    }
-
-    /**
-     * @param $actionName
-     * @param ProxyQueryInterface $query
-     * @param array $idx
-     * @param $allElements
-     */
-    public function preBatchAction($actionName, ProxyQueryInterface $query, array &$idx, $allElements)
-    {
     }
 }
