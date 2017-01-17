@@ -5,10 +5,10 @@ php:
 
 before_script:
   - composer install
-  - bin/console doctrine:database:create --env=test > /dev/null
-  - bin/console doctrine:schema:create --env=test > /dev/null
-  - bin/console doctrine:fixtures:load --no-interaction --env=test > /dev/null
-  - bin/console cache:warmup --env=test > /dev/null
+  - bin/console doctrine:database:create --env=test
+  - bin/console doctrine:schema:create --env=test
+  - bin/console doctrine:fixtures:load --no-interaction --env=test
+  - bin/console cache:warmup --env=test
 
 script: phpunit -c app/
 
