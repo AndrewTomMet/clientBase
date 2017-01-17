@@ -1,11 +1,9 @@
 <?php
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-
 /**
  * Class Test
  */
-class Test extends WebTestCase
+class Test extends PHPUnit_Framework_TestCase
 {
     public function testOnePlusOne()
     {
