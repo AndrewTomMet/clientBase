@@ -1,3 +1,5 @@
+<img src="https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/badges/quality-score.png?b=master" title="Scrutinizer Code Quality">
+
 <a href="#" id="status-image-popup" title="Latest push build on default branch: created" name="status-images" class="open-popup" data-ember-action="" data-ember-action-1004="1004">
             <img src="https://travis-ci.org/AndrewTomMet/clientBase.svg?branch=master" alt="build:created">
           </a>
