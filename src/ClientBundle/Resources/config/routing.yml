@@ -4,34 +4,41 @@
 client_home:
     path: /
     defaults: { _controller: ClientBundle:Client:home}
+    methods:  [GET]
 
 client_show:
     path: /client_show/{id}
     defaults: { _controller: ClientBundle:Client:show}
+    methods:  [GET, POST]
     requirements:
               id: \d+
+
 client_show_other:
     path: /client_show/{other}
     defaults: { _controller: ClientBundle:Client:home}
+    methods:  [GET]
 
 client_search:
     path: /client_search/
     defaults: { _controller: ClientBundle:Client:search}
+    methods:  [GET, POST]
 
 client_add:
     path: /client_add
     defaults: { _controller: ClientBundle:Client:add}
+    methods:  [GET, POST]
 
 client_del:
     path: /client_del/{id}
     defaults: { _controller: ClientBundle:Client:del}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 client_del_other:
     path: /client_del/{other}
     defaults: { _controller: ClientBundle:Client:home}
-
+    methods:  [GET]
 
 # END Client part
 
@@ -40,29 +47,35 @@ client_del_other:
 category_home:
     path: /categories
     defaults: { _controller: ClientBundle:Category:home}
+    methods:  [GET]
 
 category_show:
     path: /category_show/{id}
     defaults: { _controller: ClientBundle:Category:show}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 category_show_other:
     path: /category_show/{other}
     defaults: { _controller: ClientBundle:Category:home}
+    methods:  [GET]
 
 category_add:
     path: /category_add
     defaults: { _controller: ClientBundle:Category:add}
+    methods:  [GET, POST]
 
 category_del:
     path: /category_del/{id}
     defaults: { _controller: ClientBundle:Category:del}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 category_del_other:
     path: /category_del/{other}
+    methods:  [GET]
     defaults: { _controller: ClientBundle:Category:home}
 
 # End Category part
@@ -71,31 +84,36 @@ category_del_other:
 lang_home:
     path: /lang
     defaults: { _controller: ClientBundle:Lang:home}
+    methods:  [GET]
 
 lang_show:
     path: /lang_show/{id}
     defaults: { _controller: ClientBundle:Lang:show}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 lang_show_other:
     path: /lang_show/{other}
     defaults: { _controller: ClientBundle:Lang:home}
+    methods:  [GET]
 
 lang_add:
     path: /lang_add
     defaults: { _controller: ClientBundle:Lang:add}
+    methods:  [GET, POST]
 
 lang_del:
     path: /lang_del/{id}
     defaults: { _controller: ClientBundle:Lang:del}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 lang_del_other:
     path: /lang_del/{other}
     defaults: { _controller: ClientBundle:Lang:home}
-
+    methods:  [GET]
 # End Lang part
 
 # ContactType part contactType
@@ -103,33 +121,40 @@ lang_del_other:
 contacttype_home:
     path: /contacttype
     defaults: { _controller: ClientBundle:ContactType:home}
+    methods:  [GET]
 
 contacttype_show:
     path: /contacttype_show/{id}
     defaults: { _controller: ClientBundle:ContactType:show}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 contacttype_show_other:
     path: /contacttype_show/{other}
     defaults: { _controller: ClientBundle:ContactType:home}
+    methods:  [GET]
 
 contacttype_add:
     path: /contactype_add
     defaults: { _controller: ClientBundle:ContactType:add}
+    methods:  [GET, POST]
 
 contacttype_del:
     path: /contacttype_del/{id}
     defaults: { _controller: ClientBundle:ContactType:del}
+    methods:  [GET, POST]
     requirements:
               id: \d+
 
 contacttype_del_other:
     path: /contacttype_del/{other}
     defaults: { _controller: ClientBundle:ContactType:home}
+    methods:  [GET]
 
 # End ContactType part
 
 client_other:
     path: /{ctg}
     defaults: { _controller: ClientBundle:Client:home}
+    methods:  [GET]
