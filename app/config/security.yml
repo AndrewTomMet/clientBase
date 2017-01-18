@@ -33,15 +33,15 @@ security:
 
 
     providers:
-        in_memory:
-            memory:
-              users:
-                pig:
-                  password: $2y$12$uVCr8UJC7AL7ytWL8yKEWeh88UJGPU6hHui5b31j.8ou8W7da.w5u
-                  roles: 'ROLE_USER'
-                admin:
-                  password: $2y$12$Nk3Ak.lTNOZUF.BNpefELe8be1L56T9y5AnarFmxYbnjsZm7iJjOS
-                  roles: 'ROLE_ADMIN'
+#        in_memory:
+#            memory:
+#              users:
+#                pig:
+#                  password: $2y$12$uVCr8UJC7AL7ytWL8yKEWeh88UJGPU6hHui5b31j.8ou8W7da.w5u
+#                  roles: 'ROLE_USER'
+#                admin:
+#                  password: $2y$12$Nk3Ak.lTNOZUF.BNpefELe8be1L56T9y5AnarFmxYbnjsZm7iJjOS
+#                  roles: 'ROLE_ADMIN'
 
         our_db_provider:
             entity:

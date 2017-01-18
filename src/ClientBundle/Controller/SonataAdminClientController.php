@@ -28,8 +28,8 @@ class SonataAdminClientController extends CRUDController
             $newContacts = null;
             $oldContacts = $object->getContacts();
             $em = $this->getDoctrine()->getManager();
-            if (array_key_exists("contacts", $arr1)) {
-                $newContacts = $arr1["contacts"];
+            if (array_key_exists('contacts', $arr1)) {
+                $newContacts = $arr1['contacts'];
 
                 // Викидуем з массива нових контактів, які прийшли з POST, ті що вже були
                 // і видаляем з бази контакти які видалені у клієнта

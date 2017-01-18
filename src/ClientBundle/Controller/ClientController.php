@@ -96,7 +96,7 @@ class ClientController extends Controller
     public function homeAction(Request $request, $ctg = '')
     {
         $ctgRequest = $request->request->get('categories_form');
-        if (null != $ctgRequest && $ctgRequest['categories'] != '') {
+        if (null != $ctgRequest && '' != $ctgRequest['categories']) {
             $ctg = (integer) $ctgRequest['categories'];
         }
         $em = $this->getDoctrine()->getManager();
