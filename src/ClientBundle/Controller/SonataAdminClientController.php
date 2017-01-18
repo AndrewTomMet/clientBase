@@ -2,7 +2,6 @@
 
 namespace ClientBundle\Controller;
 
-use Assetic\Filter\PackerFilter;
 use Sonata\AdminBundle\Controller\CRUDController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,7 +16,7 @@ class SonataAdminClientController extends CRUDController
      * @param mixed   $object
      * @return null|Response
      */
-    public function preCreate(Request $request, $object)
+    protected function preCreate(Request $request, $object)
     {
         parent::preCreate($request, $object);
 
@@ -29,32 +28,11 @@ class SonataAdminClientController extends CRUDController
      * @param mixed   $object
      * @return null|Response
      */
-    public function preEdit(Request $request, $object)
+    protected function preEdit(Request $request, $object)
     {
         parent::preEdit($request, $object);
 
         return $this->updateContacts($request, $object);
-    }
-
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null
-     */
-    public function preDelete(Request $request, $object)
-    {
-        parent::preDelete($request, $object);
-        /*
-        $em = $this->getDoctrine()->getManager();
-
-        $contacts = $object->getContacts();
-        foreach ($contacts as $contact) {
-            $object->removeContact($contact);
-            $em->remove($contact);
-        }
-        */
-        //$em->flush();
-        return null;
     }
 
     private function updateContacts(Request $request, $object)
@@ -66,7 +44,7 @@ class SonataAdminClientController extends CRUDController
             $arr1 = $arr;
             break;
         }
-        $tmptest = '';
+        $tmpTest = '';
 
         if ($postData) {
             $oldContacts = null;
@@ -106,10 +84,10 @@ class SonataAdminClientController extends CRUDController
             }
         }
 
-        if ('' === $tmptest) {
+        if ('' === $tmpTest) {
             return null;
         } else {
-            return new Response($tmptest);
+            return new Response($tmpTest);
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ClientBundle\Form;
+namespace ClientBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -8,16 +8,19 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
- * Class SeacherForm
+ * Class LangForm
  */
-class SeacherForm extends AbstractType
+class LangForm extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @param FormBuilderInterface $builder
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('searchtags', TextType::class, ['mapped' => false])
-                ->add('Search', SubmitType::class);
+        $builder
+            ->add('name', TextType::class)
+            ->add('Save', SubmitType::class)
+        ;
     }
 }

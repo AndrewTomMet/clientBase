@@ -5,14 +5,11 @@ namespace ClientBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use ClientBundle\Form\ClientForm;
-use ClientBundle\Form\CategoriesForm;
+use ClientBundle\Form\Type\ClientForm;
+use ClientBundle\Form\Type\CategoriesForm;
 use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Contact;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Validator\Constraints as Assert;
-use ClientBundle\Repository\ContactRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Class ClientController
@@ -80,10 +77,10 @@ class ClientController extends Controller
      */
     public function searchAction(Request $request)
     {
-        $searcher =  $this->get('searcher');
+        //$searcher =  $this->get('searcher');
 
-        $result = $searcher->search($request->request->get('serchtags'));
-        $em = $this->getDoctrine()->getRepository('ClientBundle:Client');
+        //$result = $searcher->search($request->request->get('serchtags'));
+        //$em = $this->getDoctrine()->getRepository('ClientBundle:Client');
 
         return $this->render('ClientBundle:Default:home.html.twig');
     }
@@ -96,8 +93,8 @@ class ClientController extends Controller
     public function homeAction(Request $request, $ctg = '')
     {
         $ctgRequest = $request->request->get('categories_form');
-        if (null != $ctgRequest && '' != $ctgRequest['categories']) {
-            $ctg = (integer) $ctgRequest['categories'];
+        if (null !== $ctgRequest && '' !== $ctgRequest['categories']) {
+            $ctg = (int) $ctgRequest['categories'];
         }
         $em = $this->getDoctrine()->getManager();
         $categories = $em->getRepository('ClientBundle:Category')->findAll();

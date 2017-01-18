@@ -35,7 +35,7 @@ class Category
      */
     public function __construct()
     {
-        $this->clients = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     /**

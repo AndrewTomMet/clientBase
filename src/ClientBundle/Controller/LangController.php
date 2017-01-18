@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use ClientBundle\Entity\Lang;
-use ClientBundle\Form\LangForm;
+use ClientBundle\Form\Type\LangForm;
 
 /**
  * Class LangController

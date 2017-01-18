@@ -4,8 +4,6 @@ namespace ClientBundle\Controller;
 
 use ClientBundle\Entity\Tags;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -41,7 +39,7 @@ class TagsController extends Controller
     public function newAction(Request $request)
     {
         $tag = new Tags();
-        $form = $this->createForm('ClientBundle\Form\TagsType', $tag);
+        $form = $this->createForm('ClientBundle\Form\Type\TagsType', $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -86,7 +84,7 @@ class TagsController extends Controller
     public function editAction(Request $request, Tags $tag)
     {
         $deleteForm = $this->createDeleteForm($tag);
-        $editForm = $this->createForm('ClientBundle\Form\TagsType', $tag);
+        $editForm = $this->createForm('ClientBundle\Form\Type\TagsType', $tag);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
