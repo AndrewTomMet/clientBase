@@ -1,3 +1,5 @@
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/20452bef-a257-4a1f-8f95-6a386f4c1991/big.png)](https://insight.sensiolabs.com/projects/20452bef-a257-4a1f-8f95-6a386f4c1991)
+
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/badges/build.png?b=master)](https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/build-status/master)
 
 [![Build Status](https://travis-ci.org/AndrewTomMet/clientBase.svg?branch=master)](https://travis-ci.org/AndrewTomMet/clientBase)
