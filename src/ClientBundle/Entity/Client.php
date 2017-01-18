@@ -42,7 +42,7 @@ class Client
     /**
      * @ORM\Column(type="date", nullable=true)
      */
-    private $created_at;
+    private $createdAt;
 
     /**
      * @ORM\OneToMany(targetEntity="Contact", mappedBy="client", cascade={"remove"})
@@ -75,8 +75,8 @@ class Client
      */
     public function __construct()
     {
-        $this->contacts = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contacts = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     /**
@@ -206,14 +206,12 @@ class Client
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
-     *
      * @return Client
      * @ORM\PrePersist
      */
     public function setCreatedAt()
     {
-        $this->created_at = new \DateTime('now');
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }
@@ -225,7 +223,7 @@ class Client
      */
     public function getCreatedAt()
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
     /**

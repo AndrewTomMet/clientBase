@@ -29,7 +29,7 @@ class ClientForm extends AbstractType
     {
         $this->clientId = $options['id'];
         $builder
-            ->add('created_at', DateType::class, ['widget' => 'text',
+            ->add('createdAt', DateType::class, ['widget' => 'text',
                                                         'required' => false,
                                                         'format' => 'dd-MM-yyyy',
                                                         'disabled' => true,

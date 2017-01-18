@@ -7,7 +7,6 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use ClientBundle\Entity\Client;
-use Doctrine\ORM\EntityRepository;
 
 /**
  * Class ClientAdmin
@@ -22,7 +21,7 @@ class ClientAdmin extends AbstractAdmin
     {
         $formMapper
             ->with('дати', array('class' => 'col-md-4'))
-                ->add('created_at', 'date', ['widget' => 'text', 'required' => false, 'format' => 'd M y', 'disabled' => true])
+                ->add('createdAt', 'date', ['widget' => 'text', 'required' => false, 'format' => 'd M y', 'disabled' => true])
                 ->add('birthday', 'birthday', ['format' => 'd M y', 'placeholder' => 'd m y', 'widget' => 'text', 'required' => false])
             ->end()
             ->with('фіо', array('class' => 'col-md-8'))
@@ -46,7 +45,7 @@ class ClientAdmin extends AbstractAdmin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('created_at', null, array(), 'date', array('format' => 'd M y' ))
+            ->add('createdAt', null, array(), 'date', array('format' => 'd M y' ))
             ->add('firstname')
             ->add('surname')
             ->add('birthday', null, array(), 'birthday', array('widget' => 'text', 'format' => 'd M y' ))
@@ -60,7 +59,7 @@ class ClientAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('created_at', 'date', ['format' => 'd-m-Y'])
+            ->add('createdAt', 'date', ['format' => 'd-m-Y'])
             ->addIdentifier('getDisplayName')
             ->add('language.name')
         ;
