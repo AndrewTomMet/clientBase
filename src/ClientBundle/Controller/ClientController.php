@@ -131,7 +131,6 @@ class ClientController extends Controller
                     $contact->setType($contactType);
                     $contact->setMean($clientform['newmeancontact']);
                     $client->addContact($contact);
-                    //$contact->setClient($client);
                     $em->persist($contact);
                     $em->persist($client);
                     $em->flush();

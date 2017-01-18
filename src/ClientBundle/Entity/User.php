@@ -24,7 +24,5 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
     }
 }
