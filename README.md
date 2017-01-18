@@ -1,5 +1,5 @@
+[![codecov](https://codecov.io/gh/AndrewTomMet/clientBase/branch/master/graph/badge.svg)](https://codecov.io/gh/AndrewTomMet/clientBase)
 
-<img src="https://insight.sensiolabs.com/projects/20452bef-a257-4a1f-8f95-6a386f4c1991/analyses/5#analysis-configuration-modal">
 
 Symfony Standard Edition
 ========================
