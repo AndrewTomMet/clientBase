@@ -1,8 +1,6 @@
-<img src="https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/badges/quality-score.png?b=master" title="Scrutinizer Code Quality">
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/AndrewTomMet/clientBase/?branch=master)
 
-<a href="#" id="status-image-popup" title="Latest push build on default branch: created" name="status-images" class="open-popup" data-ember-action="" data-ember-action-1004="1004">
-            <img src="https://travis-ci.org/AndrewTomMet/clientBase.svg?branch=master" alt="build:created">
-          </a>
+[![Build Status](https://travis-ci.org/AndrewTomMet/clientBase.svg?branch=master)](https://travis-ci.org/AndrewTomMet/clientBase)
 
 [![codecov](https://codecov.io/gh/AndrewTomMet/clientBase/branch/master/graph/badge.svg)](https://codecov.io/gh/AndrewTomMet/clientBase)
 
