@@ -6,6 +6,7 @@
 
 [![codecov](https://codecov.io/gh/AndrewTomMet/clientBase/branch/master/graph/badge.svg)](https://codecov.io/gh/AndrewTomMet/clientBase)
 
+[![Dependency Status](https://www.versioneye.com/user/projects/587f4545452b830054c170bf/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/587f4545452b830054c170bf)
 
 Symfony Standard Edition
 ========================
