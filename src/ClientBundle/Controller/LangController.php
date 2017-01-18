@@ -71,7 +71,6 @@ class LangController extends Controller
 
         if ($request->isMethod('POST') && $form->isSubmitted() && $form->isValid()) {
             $lang = $form->getData();
-            var_dump($lang);
             $em->persist($lang);
             $em->flush();
 
