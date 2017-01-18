@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Andrew
- * Date: 28.11.2016
- * Time: 19:47
- */
 
 namespace ClientBundle\Admin;
 

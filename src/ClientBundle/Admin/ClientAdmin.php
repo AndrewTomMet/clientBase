@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ClientBundle\Admin;
 
 use Sonata\AdminBundle\Admin\AbstractAdmin;

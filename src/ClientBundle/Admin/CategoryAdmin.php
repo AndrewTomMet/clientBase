@@ -41,5 +41,4 @@ class CategoryAdmin extends AbstractAdmin
             ? $object->getName()
             : 'Category'; // shown in the breadcrumb on the create view
     }
-
 }
