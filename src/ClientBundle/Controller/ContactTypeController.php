@@ -105,4 +105,3 @@ class ContactTypeController extends Controller
         return $this->redirectToRoute('contacttype_home');
     }
 }
-

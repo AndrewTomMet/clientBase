@@ -10,12 +10,12 @@ use Doctrine\ORM\EntityRepository;
 class ClientRepository extends EntityRepository
 {
     /**
-     * @param $tags
+     * @param \ClientBundle\Entity\Tags $tags
      * @return array
      */
     public function getIdArrayByTags($tags)
     {
-        $tagsarray = implode(', ', $tags);
+        $tagsarray = implode([', '], $tags);
 
         return $this->getEntityManager()
             ->createQuery("'SELECT c.id FROM ClientBundle:Client c WHERE'")

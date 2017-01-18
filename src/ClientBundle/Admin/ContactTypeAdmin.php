@@ -13,6 +13,17 @@ use ClientBundle\Entity\ContactType;
  */
 class ContactTypeAdmin extends AbstractAdmin
 {
+    /**
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof ContactType
+            ? $object->getName()
+            : 'контакт';
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper->add('name');
@@ -26,12 +37,5 @@ class ContactTypeAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name');
-    }
-
-    public function toString($object)
-    {
-        return $object instanceof ContactType
-            ? $object->getName()
-            : 'контакт';
     }
 }

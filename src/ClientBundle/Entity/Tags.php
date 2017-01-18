@@ -63,4 +63,3 @@ class Tags
         return $this->name;
     }
 }
-

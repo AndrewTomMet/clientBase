@@ -4,6 +4,9 @@ namespace ClientBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class TagsControllerTest
+ */
 class TagsControllerTest extends WebTestCase
 {
     /*

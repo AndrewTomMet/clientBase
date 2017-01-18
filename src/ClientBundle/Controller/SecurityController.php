@@ -5,6 +5,7 @@ namespace ClientBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class SecurityController
@@ -12,7 +13,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SecurityController extends Controller
 {
     /**
+     * @param Request $request
      * @Route("/login", name="login")
+     * @return Response
      */
     public function loginAction(Request $request)
     {
@@ -31,7 +34,9 @@ class SecurityController extends Controller
     }
 
     /**
+     * @param Request $request
      * @Route("/checklogin", name="checklogin")
+     * @return Response
      */
     public function checkloginAction(Request $request)
     {

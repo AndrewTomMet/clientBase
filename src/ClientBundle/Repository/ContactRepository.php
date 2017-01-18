@@ -7,6 +7,6 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Class ContactRepository
  */
-class ContactRepository  extends EntityRepository
+class ContactRepository extends EntityRepository
 {
 }

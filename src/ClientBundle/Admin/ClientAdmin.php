@@ -13,6 +13,17 @@ use ClientBundle\Entity\Client;
  */
 class ClientAdmin extends AbstractAdmin
 {
+    /**
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof Client
+            ? $object->getDisplayName()
+            : 'Client';
+    }
+
     protected function configureRoutes(\Sonata\AdminBundle\Route\RouteCollection $collection)
     {
     }
@@ -63,12 +74,5 @@ class ClientAdmin extends AbstractAdmin
             ->addIdentifier('getDisplayName')
             ->add('language.name')
         ;
-    }
-
-    public function toString($object)
-    {
-        return $object instanceof Client
-            ? $object->getDisplayName()
-            : 'Client';
     }
 }

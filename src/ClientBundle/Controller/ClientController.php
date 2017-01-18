@@ -153,7 +153,6 @@ class ClientController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('client_home');
-
         }
 
         return $this->render('ClientBundle:Default:edit.html.twig', ['form' => $form->createView(), 'client' => $client]);

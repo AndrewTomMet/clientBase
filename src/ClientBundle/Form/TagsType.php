@@ -35,4 +35,3 @@ class TagsType extends AbstractType
         return 'clientbundle_tags';
     }
 }
-

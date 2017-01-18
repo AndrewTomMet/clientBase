@@ -12,6 +12,51 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class SonataAdminClientController extends CRUDController
 {
+    /**
+     * @param Request $request
+     * @param mixed   $object
+     * @return null|Response
+     */
+    public function preCreate(Request $request, $object)
+    {
+        parent::preCreate($request, $object);
+
+        return $this->updateContacts($request, $object);
+    }
+
+    /**
+     * @param Request $request
+     * @param mixed   $object
+     * @return null|Response
+     */
+    public function preEdit(Request $request, $object)
+    {
+        parent::preEdit($request, $object);
+
+        return $this->updateContacts($request, $object);
+    }
+
+    /**
+     * @param Request $request
+     * @param mixed   $object
+     * @return null
+     */
+    public function preDelete(Request $request, $object)
+    {
+        parent::preDelete($request, $object);
+        /*
+        $em = $this->getDoctrine()->getManager();
+
+        $contacts = $object->getContacts();
+        foreach ($contacts as $contact) {
+            $object->removeContact($contact);
+            $em->remove($contact);
+        }
+        */
+        //$em->flush();
+        return null;
+    }
+
     private function updateContacts(Request $request, $object)
     {
         $arr1 = [];
@@ -66,50 +111,5 @@ class SonataAdminClientController extends CRUDController
         } else {
             return new Response($tmptest);
         }
-    }
-
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null|Response
-     */
-    public function preCreate(Request $request, $object)
-    {
-        parent::preCreate($request, $object);
-
-        return $this->updateContacts($request, $object);
-    }
-
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null|Response
-     */
-    public function preEdit(Request $request, $object)
-    {
-        parent::preEdit($request, $object);
-
-        return $this->updateContacts($request, $object);
-    }
-
-    /**
-     * @param Request $request
-     * @param mixed   $object
-     * @return null
-     */
-    public function preDelete(Request $request, $object)
-    {
-        parent::preDelete($request, $object);
-        /*
-        $em = $this->getDoctrine()->getManager();
-
-        $contacts = $object->getContacts();
-        foreach ($contacts as $contact) {
-            $object->removeContact($contact);
-            $em->remove($contact);
-        }
-        */
-        //$em->flush();
-        return null;
     }
 }

@@ -15,6 +15,17 @@ class ContactAdmin extends AbstractAdmin
 {
     protected $parentAssociationMapping = 'client';
 
+    /**
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof Contact
+            ? $object->getDisplayName()
+            : 'Контакт';
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -45,12 +56,5 @@ class ContactAdmin extends AbstractAdmin
             ->add('client', 'entity', array('class' => 'ClientBundle:Client', 'choice_label' => 'getDisplayName'))
 
         ;
-    }
-
-    public function toString($object)
-    {
-        return $object instanceof Contact
-            ? $object->getDisplayName()
-            : 'Контакт';
     }
 }

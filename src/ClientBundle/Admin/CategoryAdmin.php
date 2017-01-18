@@ -13,6 +13,17 @@ use ClientBundle\Entity\Category;
  */
 class CategoryAdmin extends AbstractAdmin
 {
+    /**
+     * @param mixed $object
+     * @return string
+     */
+    public function toString($object)
+    {
+        return $object instanceof Category
+        ? $object->getName()
+        : 'Category'; // shown in the breadcrumb on the create view
+    }
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
@@ -33,12 +44,5 @@ class CategoryAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper->addIdentifier('name');
-    }
-
-    public function toString($object)
-    {
-        return $object instanceof Category
-            ? $object->getName()
-            : 'Category'; // shown in the breadcrumb on the create view
     }
 }
