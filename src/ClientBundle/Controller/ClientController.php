@@ -71,17 +71,11 @@ class ClientController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function searchAction(Request $request)
+    public function searchAction()
     {
-        //$searcher =  $this->get('searcher');
-
-        //$result = $searcher->search($request->request->get('serchtags'));
-        //$em = $this->getDoctrine()->getRepository('ClientBundle:Client');
-
-        return $this->render('ClientBundle:Default:home.html.twig');
+         return $this->render('ClientBundle:Default:home.html.twig');
     }
 
     /**
