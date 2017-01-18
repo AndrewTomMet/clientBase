@@ -21,7 +21,7 @@ client_show_other:
 client_search:
     path: /client_search/
     defaults: { _controller: ClientBundle:Client:search}
-    methods:  [GET, POST]
+    methods:  [GET]
 
 client_add:
     path: /client_add
