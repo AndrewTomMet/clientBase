@@ -4,6 +4,7 @@ namespace ClientBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use ClientBundle\Entity\ContactType;
 use ClientBundle\Form\Type\ContactTypeForm;
