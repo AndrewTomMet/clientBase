@@ -9,7 +9,6 @@ use ClientBundle\Form\Type\ClientForm;
 use ClientBundle\Form\Type\CategoriesForm;
 use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Contact;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class ClientController
