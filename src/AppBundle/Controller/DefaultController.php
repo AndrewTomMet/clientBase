@@ -12,6 +12,7 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @Method("GET")
      * @return mixed
      */
     public function indexAction()

@@ -16,6 +16,7 @@ class CategoryController extends Controller
     /**
      * @param int     $id
      * @param Request $request
+     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id, Request $request)
@@ -49,6 +50,7 @@ class CategoryController extends Controller
 
     /**
      * @return \Symfony\Component\HttpFoundation\Response
+     * @Method("GET")
      */
     public function homeAction()
     {
@@ -60,6 +62,7 @@ class CategoryController extends Controller
 
     /**
      * @param Request $request
+     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Request $request)
@@ -83,6 +86,7 @@ class CategoryController extends Controller
 
     /**
      * @param int $id
+     * @Method("GET")
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function delAction($id)

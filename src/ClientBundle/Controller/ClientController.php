@@ -18,6 +18,7 @@ class ClientController extends Controller
     /**
      * @param int     $id
      * @param Request $request
+     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function showAction($id, Request $request)
@@ -47,14 +48,14 @@ class ClientController extends Controller
                     return $this->redirectToRoute('client_del', array('id' => $client->getId()));
                 } elseif ($form->get('addcontact')->isClicked()) {
                     $contact = new Contact();
-                    $clientform = $request->request->get('client_form');
+                    $clientForm = $request->request->get('client_form');
 
-                    $contactType = $em->find('ClientBundle:ContactType', $clientform['newtypecontact']);
+                    $contactType = $em->find('ClientBundle:ContactType', $clientForm['newtypecontact']);
                     if (!$contactType) {
-                        throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientform['newtypecontact']));
+                        throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientForm['newtypecontact']));
                     } else {
                         $contact->setType($contactType);
-                        $contact->setMean($clientform['newmeancontact']);
+                        $contact->setMean($clientForm['newmeancontact']);
                         $client->addContact($contact);
                         $em->persist($contact);
                         $em->flush();
@@ -71,6 +72,7 @@ class ClientController extends Controller
     }
 
     /**
+     * @Method("GET")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function searchAction()
@@ -81,6 +83,7 @@ class ClientController extends Controller
     /**
      * @param Request $request
      * @param string  $ctg
+     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function homeAction(Request $request, $ctg = '')
@@ -107,6 +110,7 @@ class ClientController extends Controller
 
     /**
      * @param Request $request
+     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function addAction(Request $request)
@@ -149,6 +153,7 @@ class ClientController extends Controller
 
     /**
      * @param int $id
+     * @Method({"GET", "POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function delAction($id)

@@ -13,7 +13,8 @@ class SecurityController extends Controller
 {
     /**
      * @param Request $request
-     * Route("/login", name="login")
+     * @Route("/login", name="login")
+     * @Method({"GET", "POST"})
      * @return Response
      */
     public function loginAction(Request $request)
@@ -34,7 +35,8 @@ class SecurityController extends Controller
 
     /**
      * @param Request $request
-     * Route("/checklogin", name="checklogin")
+     * @Route("/checklogin", name="checklogin")
+     * @Method({"GET", "POST"})
      * @return Response
      */
     public function checkloginAction(Request $request)
