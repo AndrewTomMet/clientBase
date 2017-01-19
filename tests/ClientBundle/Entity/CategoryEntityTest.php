@@ -13,27 +13,37 @@ class CategoryEntityTest extends \PHPUnit_Framework_TestCase
     /**
      *
      */
-    public function testCount()
+    public function testAddRemoveClient()
     {
         $client = new Client();
-        $client->setFirstname('Dev');
+        $category = new Category();
 
-        $category0 = new Category();
-        $category0->setName('Test0');
+        $this->assertCount(0, $category->getClients());
+        $category->addClient($client);
+        $this->assertCount(1, $category->getClients());
+        $category->removeClient($client);
+        $this->assertCount(0, $category->getClients());
+    }
 
-        $category1 = new Category();
-        $category1->setName('Test1');
+    /**
+     *
+     */
+    public function testGetSetName()
+    {
+        $category = new Category();
+        $this->assertEmpty($category->getName());
+        $category->setName('test1');
+        $this->assertEquals('test1', $category->getName());
+    }
 
-        $category0->addClient($client);
-        $category1->addClient($client);
-        $client->addCategory($category0);
-        $client->addCategory($category1);
-        $this->assertCount(1, $category0->getClients(), 'test category '.$category0->getName().' clients count');
-        $this->assertCount(2, $client->getCategories(), 'test client '.$client->getFirstname().' category count');
-
-        $category0->removeClient($client);
-        $client->removeCategory($category0);
-        $this->assertCount(0, $category0->getClients(), 'test category '.$category0->getName().' clients count');
-        $this->assertCount(1, $client->getCategories(), 'test client '.$client->getFirstname().' category count');
+    /**
+     *
+     */
+    public function testToString()
+    {
+        $category = new Category();
+        $this->assertEmpty($category->__toString());
+        $category->setName('test1');
+        $this->assertEquals('test1', $category->__toString());
     }
 }
