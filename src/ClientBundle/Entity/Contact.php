@@ -75,8 +75,18 @@ class Contact
      */
     public function getDisplayName()
     {
+        $displayName = '';
+        if (!empty($this->getType()) && !empty($this->getType()->getName())) {
+            $displayName = $this->getType()->getName();
+        }
+        if (!empty($this->getMean())) {
+            if (!empty($displayName)) {
+                $displayName .= ': ';
+            }
+            $displayName .= $this->getMean();
+        }
 
-        return $this->getType()->getName().': '.$this->mean;
+        return $displayName;
     }
 
     /**

@@ -168,7 +168,18 @@ class Client
      */
     public function getDisplayName()
     {
-        return $this->getSurname().' '.$this->getFirstname();
+        $displayName = '';
+        if (!empty($this->getSurname())) {
+            $displayName = $this->getSurname();
+        }
+        if (!empty($this->getFirstname())) {
+            if (!empty($displayName)) {
+                $displayName .= ' ';
+            }
+            $displayName .= $this->getFirstname();
+        }
+
+        return $displayName;
     }
 
     /**
