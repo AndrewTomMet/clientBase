@@ -6,15 +6,8 @@ use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Contact;
 use ClientBundle\Entity\ContactType;
 
-/**
- * Class ContactEntityTest
- * @package tests\ClientBundle\Entity
- */
 class ContactEntityTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     public function testSetGetMean()
     {
         $mean = 'mean';
@@ -24,9 +17,6 @@ class ContactEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($mean, $contact->getMean());
     }
 
-    /**
-     *
-     */
     public function testSetGetType()
     {
         $contact = new Contact();
@@ -36,9 +26,6 @@ class ContactEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($contactType, $contact->getType());
     }
 
-    /**
-     *
-     */
     public function testGetDisplayName()
     {
         $mean = 'mean';
@@ -55,9 +42,6 @@ class ContactEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($contactTypeName.': '.$mean, $contact->getDisplayName());
     }
 
-    /**
-     *
-     */
     public function testSetGetClient()
     {
         $client = new Client();
@@ -68,9 +52,6 @@ class ContactEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($client, $contact->getClient());
     }
 
-    /**
-     *
-     */
     public function testToString()
     {
         $mean = 'mean';

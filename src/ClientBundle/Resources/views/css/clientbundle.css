@@ -15,7 +15,6 @@
 }
 
 #PageControll
-
 {
     position        :fixed;
     text-align      :left;
@@ -24,7 +23,7 @@
     width           :100%;
     height          :60px;
     z-index         :11;
-    background-color: #778193;
+    background-color:#778193;
 }
 
 #BtnClient

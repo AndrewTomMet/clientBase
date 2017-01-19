@@ -3,7 +3,6 @@ body
     background-color: #b7bebe;
 }
 
-
 header
 {
     position        : fixed;
@@ -22,6 +21,7 @@ header
     bottom          : 51px;
     left            : 0;
     width           : 100%;
+    height          : 100%;
     background-color: #938b1a;
     overflow        : auto;
 }
@@ -71,10 +71,10 @@ footer
 }
 
 #PageControll{
-    /*  position        :fixed;
+      position        :fixed;
       text-align      :left;
       left            :0;
-      top             :70px;*/
+      top             :70px;
     display: none;
     padding-left: 5px;
     height          :60px;
@@ -100,16 +100,15 @@ footer
 
 #PageContent1
 {
-  /*  position        :absolute;*/
+    position        :absolute;
     padding         : 5px 5px 5px 10px;
-    /*top             :0px;
+    top             :0px;
     left            :0px;
-    bottom          :10%;*/
+    bottom          :10%;
     width           : calc(100% - 15px);
    /* height          :100% ;*/
     background-color: #3a9d49;
     overflow: hidden;
-
 }
 /*
 #PageContent2
@@ -146,29 +145,35 @@ form div {
     margin: 10px 0px 10px 0px;
 }
 
-#client_form_created_at, #client_form_birthday
+#client_form_created_at,
+#client_form_birthday
 {
     position        :relative;
     top             :-23px ;
     left            :115px;
 }
 
-#client_form_created_at_day, #client_form_birthday_day,
-#client_form_created_at_month, #client_form_birthday_month
+#client_form_created_at_day,
+#client_form_birthday_day,
+#client_form_created_at_month,
+#client_form_birthday_month
 {
     width: 25px;
 }
 
-#client_form_created_at_year, #client_form_birthday_year
-
+#client_form_created_at_year,
+#client_form_birthday_year
 {
     width: 40px;
 }
 
-#client_form_firstname, #client_form_surname,
+#client_form_firstname,
+#client_form_surname,
 #client_form_language,
-#client_form_newtypecontact, #client_form_newmeancontact,
-#lang_form_name, #contact_type_form_name,
+#client_form_newtypecontact,
+#client_form_newmeancontact,
+#lang_form_name,
+#contact_type_form_name,
 #category_form_name,
 #categories_form_categories,
 #client_form_tags
@@ -188,7 +193,8 @@ form div {
     height          : 120px ;
 }
 
-#client_form_contacts, #client_form_categories
+#client_form_contacts,
+#client_form_categories
 {
     width           :300px;
     height          :100px ;
@@ -217,10 +223,10 @@ form div {
     width           :150px;
 }
 
-#client_form_Save, #lang_form_Save,
+#client_form_Save,
+#lang_form_Save,
 #contact_type_form_Save,
 #category_form_Save,
-
 .btnadd
 {
     position        : relative;
@@ -229,8 +235,6 @@ form div {
     height          : 25px;
     width           : 150px;
 }
-
-
 
 #client_form_delete, #lang_form_delete,
 #contact_type_form_delete, #category_form_delete

@@ -13,7 +13,6 @@
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
-
 {% endblock %}
 
 {% block content1 %}
@@ -21,7 +20,7 @@
     <h2>Клієнти</h2>
     {% for client in clients %}
         <div class="clientName"><a href="{{ path("client_show", { 'id': client.getId()}) }}">
-        {{ client.getFirstName()}} {{client.getSurname()}}</a></div>
+        {{client.getFirstName()}} {{client.getSurname()}}</a></div>
     {% endfor %}
 {% endblock %}
 

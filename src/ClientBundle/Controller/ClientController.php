@@ -10,12 +10,31 @@ use ClientBundle\Form\Type\ClientForm;
 use ClientBundle\Form\Type\CategoriesForm;
 use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Contact;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ClientController
  */
 class ClientController extends Controller
 {
+    /**
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function checkAction($id)
+    {
+        $validator = $this->get('client.contains_checkhaveallcontacttypes_validator');
+        $em = $this->getDoctrine()->getManager();
+        $client = $em->find('ClientBundle:Client', $id);
+        $allContactTypes = $em->getRepository('ClientBundle:ContactType')->findAll();
+        $validator->setContactTypes($allContactTypes);
+
+        $fuckingTmp = new \ClientBundle\Validator\Constraints\ContainsCheckHaveAllContactTypes();
+        $errors = $validator->validate($client, $fuckingTmp);
+
+        return new Response('test '.$id);
+    }
+
     /**
      * @param int     $id
      * @param Request $request
@@ -24,7 +43,6 @@ class ClientController extends Controller
      */
     public function showAction($id, Request $request)
     {
-
         if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             throw $this->createAccessDeniedException();
         }
@@ -127,14 +145,14 @@ class ClientController extends Controller
 
             if ($form->get('addcontact')->isClicked()) {
                 $contact = new Contact();
-                $clientform = $request->request->get('client_form');
+                $clientForm = $request->request->get('client_form');
 
-                $contactType = $em->getRepository('ClientBundle:ContactType')->find($clientform['newtypecontact']);
+                $contactType = $em->getRepository('ClientBundle:ContactType')->find($clientForm['newtypecontact']);
                 if (!$contactType) {
-                    throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientform['newtypecontact']));
+                    throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientForm['newtypecontact']));
                 } else {
                     $contact->setType($contactType);
-                    $contact->setMean($clientform['newmeancontact']);
+                    $contact->setMean($clientForm['newmeancontact']);
                     $client->addContact($contact);
                     $em->persist($contact);
                     $em->persist($client);

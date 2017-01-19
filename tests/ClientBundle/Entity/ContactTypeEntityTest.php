@@ -4,14 +4,8 @@ namespace tests\ClientBundle\Entity;
 
 use ClientBundle\Entity\ContactType;
 
-/**
- * Class ContactTypeEntityTest
- */
 class ContactTypeEntityTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     public function testSetGetName()
     {
         $name = 'name';
@@ -22,9 +16,6 @@ class ContactTypeEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($name, $contactType->getName());
     }
 
-    /**
-     *
-     */
     public function testToString()
     {
         $name = 'name';

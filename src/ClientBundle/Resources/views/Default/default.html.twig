@@ -30,12 +30,13 @@
         </div>
 
         <div id="PageContent1">
-        {% block content1 %}{% endblock %}
+        {% block content1 %} {% endblock %}
         </div>
     </div>
 {% endblock %}
-    {% block footer %}
-        <footer>
-        {% block footer1 %} {% endblock %}
-        </footer>
-    {% endblock %}
+
+{% block footer %}
+    <footer>
+    {% block footer1 %} {% endblock %}
+    </footer>
+{% endblock %}

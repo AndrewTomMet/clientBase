@@ -5,14 +5,8 @@ namespace tests\ClientBundle\Entity;
 use ClientBundle\Entity\Category;
 use ClientBundle\Entity\Client;
 
-/**
- * Class CategoryEntityTest
- */
 class CategoryEntityTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     public function testAddRemoveClient()
     {
         $client = new Client();
@@ -25,9 +19,6 @@ class CategoryEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(0, $category->getClients());
     }
 
-    /**
-     *
-     */
     public function testGetSetName()
     {
         $category = new Category();
@@ -36,9 +27,6 @@ class CategoryEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('test1', $category->getName());
     }
 
-    /**
-     *
-     */
     public function testToString()
     {
         $category = new Category();

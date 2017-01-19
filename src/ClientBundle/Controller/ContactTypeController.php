@@ -49,7 +49,7 @@ class ContactTypeController extends Controller
     }
 
     /**
-     * @Method("GET"})
+     * @Method("GET")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function homeAction()

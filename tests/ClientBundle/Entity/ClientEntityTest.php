@@ -7,14 +7,8 @@ use ClientBundle\Entity\Client;
 use ClientBundle\Entity\Contact;
 use ClientBundle\Entity\Lang;
 
-/**
- * Class ClientEntityTest
- */
 class ClientEntityTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     public function testSetGetTags()
     {
         $checkString = 'new tag';
@@ -25,9 +19,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([$checkString], $client->getTags());
     }
 
-    /**
-     *
-     */
     public function testSetGetFirstName()
     {
         $checkString = 'FirstName';
@@ -37,9 +28,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($checkString, $client->getFirstname());
     }
 
-    /**
-     *
-     */
     public function testSetGetSurname()
     {
         $checkString = 'Surname';
@@ -49,9 +37,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($checkString, $client->getSurname());
     }
 
-    /**
-     *
-     */
     public function testGetDisplayName()
     {
         $checkStringFirstName = 'FirstName';
@@ -71,9 +56,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($checkStringSurName.' '.$checkStringFirstName, $client->getDisplayName());
     }
 
-    /**
-     *
-     */
     public function testToString()
     {
         $checkStringFirstName = 'FirstName';
@@ -83,9 +65,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($checkStringFirstName, $client->__toString());
     }
 
-    /**
-     *
-     */
     public function testSetGetBirthday()
     {
         $birthday = new \DateTime('now');
@@ -94,9 +73,7 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $client->setBirthday($birthday);
         $this->assertEquals($birthday, $client->getBirthday());
     }
-    /**
-     *
-     */
+
     public function testSetGetCreatedAt()
     {
         $today = new \DateTime('now');
@@ -105,9 +82,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($today, $client->getCreatedAt());
     }
 
-    /**
-     *
-     */
     public function testSetGetDescription()
     {
         $description = 'Description';
@@ -117,9 +91,6 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($description, $client->getDescription());
     }
 
-    /**
-     *
-     */
     public function testAddRemoveGetContact()
     {
         $client = new Client();
@@ -130,23 +101,18 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $client->removeContact($contact);
         $this->assertCount(0, $client->getContacts());
     }
-    /**
-     *
-     */
+
     public function testAddRemoveGetCategories()
     {
         $client = new Client();
-        $catagory = new Category();
+        $category = new Category();
         $this->assertCount(0, $client->getCategories());
-        $client->addCategory($catagory);
+        $client->addCategory($category);
         $this->assertCount(1, $client->getCategories());
-        $client->removeCategory($catagory);
+        $client->removeCategory($category);
         $this->assertCount(0, $client->getCategories());
     }
 
-    /**
-     *
-     */
     public function testSetGetLanguage()
     {
         $client = new Client();

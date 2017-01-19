@@ -4,14 +4,8 @@ namespace tests\ClientBundle\Entity;
 
 use ClientBundle\Entity\Lang;
 
-/**
- * Class LangEntityTest
- */
 class LangEntityTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     *
-     */
     public function testSetGetName()
     {
         $name = 'name';
@@ -22,9 +16,6 @@ class LangEntityTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($name, $lang->getName());
     }
 
-    /**
-     *
-     */
     public function testToString()
     {
         $name = 'name';

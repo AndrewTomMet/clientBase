@@ -11,7 +11,14 @@ client_show:
     defaults: { _controller: ClientBundle:Client:show}
     methods:  [GET, POST]
     requirements:
-              id: \d+
+        id: \d+
+
+client_check:
+    path: /client_check/{id}
+    defaults: { _controller: ClientBundle:Client:check}
+    methods:  [GET]
+    requirements:
+        id: \d+
 
 client_show_other:
     path: /client_show/{other}
@@ -33,7 +40,7 @@ client_del:
     defaults: { _controller: ClientBundle:Client:del}
     methods:  [GET, POST]
     requirements:
-              id: \d+
+        id: \d+
 
 client_del_other:
     path: /client_del/{other}
