@@ -11,4 +11,9 @@ install:
 before_script:
   - vendor/bin/phpcs --config-set installed_paths vendor/escapestudios/symfony2-coding-standard
 
-script: vendor/bin/phpcs --standard=Symfony2 -n src
+script:
+  - vendor/bin/phpcs --standard=Symfony2 -n src
+  - vendor/bin/phpunit tests/ClientBundle/Entity --coverage-clover=coverage.xml
+
+after_success:
+  - codecov
