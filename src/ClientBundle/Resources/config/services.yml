@@ -1,11 +1,17 @@
 parameters:
     security.acl.permission.map.class: Sonata\AdminBundle\Security\Acl\Permission\AdminPermissionMap
-    validator.check.repository.name: ClientBundle\Entity\ContactType
 
 services:
+    client.validator.repository:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - ClientBundle\Entity\ContactType
+
     client.contains_checkhaveallcontacttypes_validator:
         class: ClientBundle\Validator\Constraints\ContainsCheckHaveAllContactTypesValidator
-        arguments: ["@doctrine.orm.entity_manager", "%validator.check.repository.name%"]
+        arguments:
+            - "@client.validator.repository"
         tags:
             - { name: validator.constraint_validator }
 

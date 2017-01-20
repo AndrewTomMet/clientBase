@@ -9,4 +9,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ContactTypeRepository extends EntityRepository
 {
+    /**
+     * @return array
+     */
+    public function getAllIds()
+    {
+        $result = $this->getEntityManager()
+            ->createQuery('SELECT ct.id FROM ClientBundle:ContactType ct')
+            ->getResult();
+
+        return array_column($result, 'id');
+    }
 }

@@ -4,33 +4,21 @@ namespace ClientBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Constraint;
-use Doctrine\Common\Persistence\ObjectManager;
-
+use Doctrine\ORM\EntityRepository;
 /**
  * Class ContainsCheckHaveAllContactTypesValidator
  */
 class ContainsCheckHaveAllContactTypesValidator extends ConstraintValidator
 {
-    protected $entityManager;
-    protected $repositoryName;
-
-    /**
-     * @return string
-     */
-    public function getRepositoryName()
-    {
-        return $this->repositoryName;
-    }
+    protected $repository;
 
     /**
      * ContainsCheckHaveAllContactTypesValidator constructor.
-     * @param ObjectManager $manager
-     * @param string        $repositoryName
+     * @param EntityRepository $repository
      */
-    public function __construct(ObjectManager $manager, $repositoryName = '')
+    public function __construct(EntityRepository $repository)
     {
-        $this->entityManager = $manager;
-        $this->repositoryName = $repositoryName;
+        $this->repository = $repository;
     }
 
     /**
@@ -42,11 +30,8 @@ class ContainsCheckHaveAllContactTypesValidator extends ConstraintValidator
         $clientContacts = $client->getContacts();
 
         $allContactsTypeId = [];
-        if (!empty($this->entityManager) && !empty($this->getRepositoryName())) {
-            $allContactTypes = $this->entityManager->getRepository($this->getRepositoryName())->findAll();
-            foreach ($allContactTypes as $contactType) {
-                $allContactsTypeId[] = $contactType->getId();
-            }
+        if (!empty($this->repository)) {
+            $allContactsTypeId = $this->repository->getAllIds();
         }
 
         $clientContactsTypeId = [];
