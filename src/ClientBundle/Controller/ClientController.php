@@ -29,8 +29,7 @@ class ClientController extends Controller
         $allContactTypes = $em->getRepository('ClientBundle:ContactType')->findAll();
         $validator->setContactTypes($allContactTypes);
 
-        $fuckingTmp = new \ClientBundle\Validator\Constraints\ContainsCheckHaveAllContactTypes();
-        $errors = $validator->validate($client, $fuckingTmp);
+        $errors = $validator->validate($client);
 
         return new Response('test '.$id);
     }

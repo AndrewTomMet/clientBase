@@ -121,4 +121,15 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $client->setLanguage($language);
         $this->assertEquals($language, $client->getLanguage());
     }
+
+    public function testMock()
+    {
+        $client = new Client();
+        $contact = new Contact();
+        $client->addContact($contact);
+
+        $validator = $this->getMock('ContainsCheckHaveAllContactTypesValidator');
+        $validator->method('validate')->with($client)->will($this->returnValue(0));
+
+    }
 }

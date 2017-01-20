@@ -2,23 +2,35 @@
 
 namespace ClientBundle\Validator\Constraints;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Constraint;
+use Doctrine\Common\Persistence\ObjectManager;
+
 /**
  * Class ContainsCheckHaveAllContactTypesValidator
  */
 class ContainsCheckHaveAllContactTypesValidator extends ConstraintValidator
 {
-    /** @var ArrayCollection */
-    private $contactTypes;
+    protected $entityManager;
+    protected $repositoryName;
 
     /**
-     * @param ArrayCollection $contactTypes
+     * @return string
      */
-    public function setContactTypes($contactTypes)
+    public function getRepositoryName()
     {
-        $this->contactTypes = $contactTypes;
+        return $this->repositoryName;
+    }
+
+    /**
+     * ContainsCheckHaveAllContactTypesValidator constructor.
+     * @param ObjectManager $manager
+     * @param string        $repositoryName
+     */
+    public function __construct(ObjectManager $manager, $repositoryName = '')
+    {
+        $this->entityManager = $manager;
+        $this->repositoryName = $repositoryName;
     }
 
     /**
@@ -27,22 +39,26 @@ class ContainsCheckHaveAllContactTypesValidator extends ConstraintValidator
      */
     public function validate($client, Constraint $constraint)
     {
-        $contacts = $client->getContacts();
+        $clientContacts = $client->getContacts();
 
-        var_dump($contacts->toArray());
-        var_dump($this->contactTypes);
-
-        //$diff = array_diff($this->contactTypes, );
-        //$contactArr['type']
-    }
-
-    private function getElemsByKey($arr)
-    {
-        $result = array();
-        foreach ($arr as $ar) {
-            $result[] = $arr->getType();
+        $allContactsTypeId = [];
+        if (!empty($this->getRepositoryName())) {
+            $allContactTypes = $this->entityManager->getRepository($this->getRepositoryName())->findAll();
+            foreach ($allContactTypes as $contactType) {
+                $allContactsTypeId[] = $contactType->getId();
+            }
         }
 
-        return $result;
+        $clientContactsTypeId = [];
+        foreach ($clientContacts as $contact) {
+            $clientContactsTypeId[] = $contact->getType()->getId();
+        }
+
+        $result = array_diff($allContactsTypeId, $clientContactsTypeId);
+        if (!empty($result)) {
+            $this->context->buildViolation($constraint->message)
+                ->setParameter('%name%', $client->getFirstName())
+                ->addViolation();
+        }
     }
 }

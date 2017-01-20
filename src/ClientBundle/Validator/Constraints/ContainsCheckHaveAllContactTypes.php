@@ -6,10 +6,12 @@ use Symfony\Component\Validator\Constraint;
 
 /**
  * Class ContainsCheckHaveAllContactTypes
+ *
+ * @Annotation
  */
 class ContainsCheckHaveAllContactTypes extends Constraint
 {
-    public $message = 'The client %name% have not all contactTypes!';
+    public $message = 'The client %name% have not all contact types!';
 
     /**
      * @return string
