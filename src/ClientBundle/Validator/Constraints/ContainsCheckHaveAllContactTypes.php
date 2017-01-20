@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class ContainsCheckHaveAllContactTypes extends Constraint
 {
-    public $message = 'The client %name% have not all contact types!';
+    public $message = 'Клієнт %name% повинин мати всі типи контактів!';
 
     /**
      * @return string

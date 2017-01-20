@@ -14,7 +14,6 @@ use ClientBundle\Validator\Constraints as ClientAssert;
  * @ORM\Table(name="client")
  * @ORM\HasLifecycleCallbacks
  */
-
 class Client
 {
     /**

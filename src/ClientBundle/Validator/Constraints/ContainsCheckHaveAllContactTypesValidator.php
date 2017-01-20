@@ -42,7 +42,7 @@ class ContainsCheckHaveAllContactTypesValidator extends ConstraintValidator
         $clientContacts = $client->getContacts();
 
         $allContactsTypeId = [];
-        if (!empty($this->getRepositoryName())) {
+        if (!empty($this->entityManager) && !empty($this->getRepositoryName())) {
             $allContactTypes = $this->entityManager->getRepository($this->getRepositoryName())->findAll();
             foreach ($allContactTypes as $contactType) {
                 $allContactsTypeId[] = $contactType->getId();

@@ -23,14 +23,6 @@ class ClientController extends Controller
      */
     public function checkAction($id)
     {
-        $validator = $this->get('client.contains_checkhaveallcontacttypes_validator');
-        $em = $this->getDoctrine()->getManager();
-        $client = $em->find('ClientBundle:Client', $id);
-        $allContactTypes = $em->getRepository('ClientBundle:ContactType')->findAll();
-        $validator->setContactTypes($allContactTypes);
-
-        $errors = $validator->validate($client);
-
         return new Response('test '.$id);
     }
 

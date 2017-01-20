@@ -128,8 +128,13 @@ class ClientEntityTest extends \PHPUnit_Framework_TestCase
         $contact = new Contact();
         $client->addContact($contact);
 
-        $validator = $this->getMock('ContainsCheckHaveAllContactTypesValidator');
-        $validator->method('validate')->with($client)->will($this->returnValue(0));
+        $validator = $this->getMock('ContainsCheckHaveAllContactTypesValidator',['validate']);
+        $validator
+            ->expects($this->any())
+            ->method('validate')
+            ->with($client)
+            ->will($this->returnValue(0));
 
+        $this->assertCount(1, $client->getContacts());
     }
 }
