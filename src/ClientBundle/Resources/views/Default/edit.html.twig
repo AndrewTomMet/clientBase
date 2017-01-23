@@ -1,29 +1,14 @@
 {% extends 'ClientBundle:Default:default.html.twig' %}
+
 {% block title %}
     Clients
 {% endblock %}
 
 {% block content1 %}
-
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
     <h2>Редагування клієнта</h2>
     {{ form_start(form) }}
-    {{ form_errors(form) }}
-    {{ form_row(form.createdAt) }}
-    {{ form_row(form.firstname) }}
-    {{ form_row(form.surname) }}
-    {{ form_row(form.birthday) }}
-    {{ form_row(form.language) }}
-    {{ form_row(form.newtypecontact) }}
-    {{ form_row(form.newmeancontact) }}
-    {{ form_row(form.addcontact) }}
-    <div class="block1">
-        <div class="categories">{{ form_row(form.contacts) }}</div>
-        <div class="categories">{{ form_row(form.categories) }}</div>
-    </div>
-    <div class="description">{{ form_row(form.description) }}</div>
-    <div class="tags">{{ form_row(form.tags) }}</div>
-
-    {{ form_row(form.Save) }}
+    {{ form_widget(form) }}
     {{ form_end(form) }}
 
 
