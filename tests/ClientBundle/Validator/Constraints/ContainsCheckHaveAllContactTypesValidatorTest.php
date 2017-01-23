@@ -32,12 +32,12 @@ class ContainsCheckHaveAllContactTypesValidatorTest extends \PHPUnit_Framework_T
 
         $this->contains = new ClientAssert\ContainsCheckHaveAllContactTypes();
 
-        $this->contactType = $this->getMock(ContactType::class, ['getId']);
+        $this->contactType = $this->createMock(ContactType::class, ['getId']);
         $this->contactType->expects($this->any())
             ->method('getId')
             ->will($this->returnValue(0));
 
-        $this->clientContact = $this->getMock(Contact::class, ['getType']);
+        $this->clientContact = $this->createMock(Contact::class, ['getType']);
         $this->clientContact->expects($this->any())
             ->method('getType')
             ->will($this->returnValue($this->contactType));
@@ -47,12 +47,12 @@ class ContainsCheckHaveAllContactTypesValidatorTest extends \PHPUnit_Framework_T
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->contactType1 = $this->getMock(ContactType::class, ['getId']);
+        $this->contactType1 = $this->createMock(ContactType::class, ['getId']);
         $this->contactType1->expects($this->any())
             ->method('getId')
             ->will($this->returnValue(1));
 
-        $this->clientContact1 = $this->getMock(Contact::class, ['getType']);
+        $this->clientContact1 = $this->createMock(Contact::class, ['getType']);
         $this->clientContact1->expects($this->any())
             ->method('getType')
             ->will($this->returnValue($this->contactType1));
@@ -72,7 +72,7 @@ class ContainsCheckHaveAllContactTypesValidatorTest extends \PHPUnit_Framework_T
 
     public function testPassValidator()
     {
-        $client = $this->getMock(Client::class, ['getContacts', 'getFirstName']);
+        $client = $this->createMock(Client::class, ['getContacts', 'getFirstName']);
 
         $client->expects($this->any())
             ->method('getFirstName')
@@ -96,7 +96,7 @@ class ContainsCheckHaveAllContactTypesValidatorTest extends \PHPUnit_Framework_T
 
     public function testFailValidator()
     {
-        $client = $this->getMock(Client::class, ['getContacts', 'getFirstName']);
+        $client = $this->createMock(Client::class, ['getContacts', 'getFirstName']);
 
         $client->expects($this->any())
             ->method('getFirstName')
