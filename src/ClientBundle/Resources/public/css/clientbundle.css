@@ -84,18 +84,16 @@ footer
 {
     position        :absolute;
     top             :23px;
-    width           :100px;
-    height          :25px;
+    width           :150px;
 }
 
 #BtnClient
 {
     left:22px;
-    width:150px;
 }
-#BtnCategories  { left    :334px;}
-#BtnLangs       { left    :450px;}
-#BtnContactType { left    :562px;}
+#BtnCategories  { left    :300px;}
+#BtnLangs       { left    :500px;}
+#BtnContactType { left    :700px;}
 
 #PageContent1
 {
