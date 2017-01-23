@@ -21,7 +21,6 @@ header
     left            : 0;
     width           : 100%;
     height          : 100%;
-    background-color: #938b1a;
     overflow        : auto;
 }
 
@@ -30,8 +29,8 @@ h2 {
 }
 
 .clientName {
-    width: 500px;
-    height: 20px;
+    width: 100%;
+    height: 30px;
     border: 1px solid #e38d13;
     background-color: #5c7a9d;
     margin: 5px;
@@ -107,40 +106,6 @@ footer
     bottom          :10%;
     width           : calc(100% - 15px);
     float           : left ;
-    background-color: #3a9d49;
-
-}
-/*
-#PageContent2
-{
-    position        :relative;
-    bottom          : 0;
-    left            : 0;
-    height          :60px;
-    width           :100%;
-    z-index         :2;
-
-}
-*/
-.block1{
-    position        : relative;
-    height          : 120px;
-    margin-bottom   : 5px;
-}
-
-.description{
-    position        : relative;
-    top             : 20px;
-    left            : 115px;
-    height          : 120px ;
-    width           : 600px;
-}
-
-.categories{
-    position        : inherit;
-    display         : inline-block;
-    left            : 115px;
-    width           : 300px;
 }
 
 .tags{
@@ -150,102 +115,4 @@ footer
 
 form div {
     margin: 10px 0px 10px 0px;
-}
-
-#client_form_createdAt,
-#client_form_birthday
-{
-    position        :relative;
-    top             :-23px ;
-    left            :115px;
-}
-
-#client_form_createdAt_day,
-#client_form_birthday_day,
-#client_form_createdAt_month,
-#client_form_birthday_month
-{
-    width: 25px;
-}
-
-#client_form_createdAt_year,
-#client_form_birthday_year
-{
-    width: 40px;
-}
-
-#client_form_firstname,
-#client_form_surname,
-#client_form_language,
-#client_form_newtypecontact,
-#client_form_newmeancontact,
-#lang_form_name,
-#contact_type_form_name,
-#category_form_name,
-#categories_form_categories,
-#client_form_tags
-{
-    position        :absolute;
-    left            :115px;
-    width           :300px;
-}
-
-#client_form_tags
-{
-    top             : 20px;
-    width           :600px;
-}
-
-#client_form_contacts,
-#client_form_categories
-{
-    width           :300px;
-    height          :100px ;
-}
-
-#client_form_description {
-    position        : relative;
-    height          : 100px;
-    width           : 600px;
-}
-
-#client_form_addcontact
-{
-    position        :relative;
-    left            :115px;
-    height          :25px;
-    width           :150px;
-}
-
-#categories_form_go
-{
-    position        :relative;
-    top             : -20px;
-    left            :425px;
-    height          :25px;
-    width           :150px;
-}
-
-#client_form_Save,
-#lang_form_Save,
-#contact_type_form_Save,
-#category_form_Save,
-.btnadd
-{
-    position        : relative;
-    top             : 15px;
-    left            : 10px;
-    height          : 25px;
-    width           : 150px;
-}
-
-#client_form_delete, #lang_form_delete,
-#contact_type_form_delete, #category_form_delete
-{
-    position        : relative;
-    top             : -10px;
-    left            : 215px;
-    height          : 25px;
-    width           : 150px;
-    z-index         : 5;
 }

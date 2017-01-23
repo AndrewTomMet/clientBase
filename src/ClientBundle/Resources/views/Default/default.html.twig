@@ -1,26 +1,26 @@
 {% extends "base.html.twig" %}
+
 {% block stylesheets %}
     {% stylesheets '@ClientBundle/Resources/public/css/*' debug=false filter='cssrewrite' %}
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" >
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" >
+    {% endstylesheets %}
+    {% stylesheets '@bootstrap_css' %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}"/>
     {% endstylesheets %}
 {% endblock %}
 
 {% block header %}
     <header>
-
         <div id="PageHeader1">
-            <input  type="button" id="BtnClient" onclick="window.location.href='{{path('client_home')}}';return false;"
-                    name=""value="Клієнты">
-
-            <input type="button" id="BtnCategories" onclick="window.location.href='{{path('category_home')}}' ;return false;"
+            <input  type="button" id="BtnClient" class="btn btn-default" onclick="window.location.href='{{path('client_home')}}';return false;"
+                    name="" value="Клієнты">
+            <input type="button" id="BtnCategories" class="btn btn-default" onclick="window.location.href='{{path('category_home')}}' ;return false;"
                    name="" value="Категорії">
-            <input type="button" id="BtnLangs" onclick="window.location.href='{{path('lang_home')}}';return false;"
+            <input type="button" id="BtnLangs" class="btn btn-default" onclick="window.location.href='{{path('lang_home')}}';return false;"
                    name="" value="Мови">
-            <input type="button"
-                   id="BtnContactType" onclick="window.location.href='{{path('contacttype_home')}}';return false;"
+            <input type="button" id="BtnContactType" class="btn btn-default" onclick="window.location.href='{{path('contacttype_home')}}';return false;"
                    name="" value="Типи контактів">
         </div>
-
     </header>
 {% endblock %}
 
@@ -40,4 +40,10 @@
     <footer>
     {% block footer1 %} {% endblock %}
     </footer>
+{% endblock %}
+
+{% block javascripts %}
+    {% javascripts '@jquery' '@bootstrap_js' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
