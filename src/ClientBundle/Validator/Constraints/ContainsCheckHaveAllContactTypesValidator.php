@@ -5,6 +5,7 @@ namespace ClientBundle\Validator\Constraints;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Constraint;
 use Doctrine\ORM\EntityRepository;
+
 /**
  * Class ContainsCheckHaveAllContactTypesValidator
  */
