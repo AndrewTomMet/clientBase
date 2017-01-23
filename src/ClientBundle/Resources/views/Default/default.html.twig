@@ -1,9 +1,10 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
     {% stylesheets '@ClientBundle/Resources/public/css/*' debug=false filter='cssrewrite' %}
-     <link rel="stylesheet" href="{{ asset_url }}" type="text/css" >
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" >
     {% endstylesheets %}
 {% endblock %}
+
 {% block header %}
     <header>
 
@@ -23,7 +24,7 @@
     </header>
 {% endblock %}
 
-{% block content %}
+{% block mainContent %}
     <div id="Content" class="content">
         <div id="PageControll" class ="controll">
         {% block controll %} {% endblock %}

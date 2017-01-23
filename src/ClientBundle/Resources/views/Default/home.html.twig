@@ -5,8 +5,8 @@
 
 {% block controll %}
     <style>
-        #PageControll{
-            display: block;
+        #PageControll {
+            display: none;
         }
     </style>
     <br>
@@ -19,9 +19,12 @@
 
     <h2>Клієнти</h2>
     {% for client in clients %}
-        <div class="clientName"><a href="{{ path("client_show", { 'id': client.getId()}) }}">
-        {{client.getFirstName()}} {{client.getSurname()}}</a></div>
+       <div class="clientName">
+            <a href="{{ path("client_show", { 'id': client.getId()}) }}">
+                {{client.getDisplayName()}}</a>
+       </div>
     {% endfor %}
+
 {% endblock %}
 
  {% block footer1 %}

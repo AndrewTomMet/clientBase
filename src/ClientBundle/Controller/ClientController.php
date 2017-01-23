@@ -72,7 +72,6 @@ class ClientController extends Controller
                     }
                 } else {
                     $em->flush();
-
                     return $this->redirectToRoute('client_home');
                 }
             }

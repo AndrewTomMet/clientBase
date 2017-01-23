@@ -1,6 +1,6 @@
 body
 {
-    background-color: #b7bebe;
+  /*  background-color: #b7bebe;*/
 }
 
 header
@@ -10,7 +10,6 @@ header
     left            : 0;
     height          :70px;
     width           :100%;
-    z-index         :5;
     float: left;
 }
 
@@ -56,8 +55,6 @@ footer
     height          : 50px;
     width           : 100%;
     background-color: #5c7a9d;
-    z-index         :5;
-
 }
 
 #PageHeader1{
@@ -71,14 +68,17 @@ footer
 }
 
 #PageControll{
-      position        :fixed;
-      text-align      :left;
-      left            :0;
-      top             :70px;
-    display: none;
-    padding-left: 5px;
-    height          :60px;
+    position        :fixed;
+    text-align      :left;
+    left            :0;
+    top             :70px;
+    display         : none;
+    padding-left    : 5px;
+    height          :0px;
+    width           : 100%;
     background-color: #5c7a9d;
+    z-index         : 5;
+    float           : left;
 }
 
 #BtnClient, #BtnCategories, #BtnLangs, #BtnContactType
@@ -106,9 +106,9 @@ footer
     left            :0px;
     bottom          :10%;
     width           : calc(100% - 15px);
-   /* height          :100% ;*/
+    float           : left ;
     background-color: #3a9d49;
-    overflow: hidden;
+
 }
 /*
 #PageContent2
@@ -123,15 +123,22 @@ footer
 }
 */
 .block1{
-    position        :relative;
- /*   display         : block;*/
-    height: 120px;
-    margin-bottom: 5px;
-
+    position        : relative;
+    height          : 120px;
+    margin-bottom   : 5px;
 }
+
+.description{
+    position        : relative;
+    top             : 20px;
+    left            : 115px;
+    height          : 120px ;
+    width           : 600px;
+}
+
 .categories{
     position        : inherit;
-    display         : inline-block ;
+    display         : inline-block;
     left            : 115px;
     width           : 300px;
 }
@@ -145,7 +152,7 @@ form div {
     margin: 10px 0px 10px 0px;
 }
 
-#client_form_created_at,
+#client_form_createdAt,
 #client_form_birthday
 {
     position        :relative;
@@ -153,15 +160,15 @@ form div {
     left            :115px;
 }
 
-#client_form_created_at_day,
+#client_form_createdAt_day,
 #client_form_birthday_day,
-#client_form_created_at_month,
+#client_form_createdAt_month,
 #client_form_birthday_month
 {
     width: 25px;
 }
 
-#client_form_created_at_year,
+#client_form_createdAt_year,
 #client_form_birthday_year
 {
     width: 40px;
@@ -185,12 +192,8 @@ form div {
 
 #client_form_tags
 {
+    top             : 20px;
     width           :600px;
-}
-
-.description{
-    position        : relative;
-    height          : 120px ;
 }
 
 #client_form_contacts,
@@ -201,8 +204,8 @@ form div {
 }
 
 #client_form_description {
+    position        : relative;
     height          : 100px;
-    left            : 115px;
     width           : 600px;
 }
 
