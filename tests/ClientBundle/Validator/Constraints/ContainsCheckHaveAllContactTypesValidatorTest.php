@@ -111,7 +111,7 @@ class ContainsCheckHaveAllContactTypesValidatorTest extends \PHPUnit_Framework_T
             ->with($this->equalTo('%name%'), $this->equalTo($client->getFirstName()))
             ->will($this->returnSelf());
 
-        $this->context->expects($this->never())
+        $this->context->expects($this->once())
             ->method('buildViolation')
             ->will($this->returnValue($this->constraintValidationBuilder));
 

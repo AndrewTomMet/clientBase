@@ -4,16 +4,12 @@ services:
         arguments: [~, ClientBundle\Entity\Category, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: Category }
-#        calls:
-#            - [ setTranslationDomain, [ClientBundle]]
 
       client.admin.contact:
         class: ClientBundle\Admin\ContactAdmin
         arguments: [~, ClientBundle\Entity\Contact, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: Contact }
-#        calls:
-#            - [ setTranslationDomain, [ClientBundle]]
 
       client.admin.client:
         class: ClientBundle\Admin\ClientAdmin
@@ -28,13 +24,9 @@ services:
         arguments: [~, ClientBundle\Entity\Lang, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: Lang }
-#        calls:
-#            - [ setTranslationDomain, [ClientBundle]]
 
       client.admin.contacttype:
         class: ClientBundle\Admin\ContactTypeAdmin
         arguments: [~, ClientBundle\Entity\ContactType, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Content", label: ContactType }
-#        calls:
-#            - [ setTranslationDomain, [ClientBundle]]

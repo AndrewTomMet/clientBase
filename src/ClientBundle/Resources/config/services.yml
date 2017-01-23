@@ -4,7 +4,7 @@ parameters:
 services:
     client.validator.repository:
         class: Doctrine\ORM\EntityRepository
-        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        factory: 'doctrine.orm.default_entity_manager:getRepository'
         arguments:
             - ClientBundle\Entity\ContactType
 
