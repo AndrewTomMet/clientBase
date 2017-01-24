@@ -143,7 +143,7 @@ contacttype_show_other:
     methods:  [GET]
 
 contacttype_add:
-    path: /contactype_add
+    path: /contacttype_add
     defaults: { _controller: ClientBundle:ContactType:add}
     methods:  [GET, POST]
 
