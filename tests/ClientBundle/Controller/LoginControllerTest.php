@@ -4,41 +4,58 @@ namespace tests\ClientBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
+use ClientBundle\DataFixtures\ORM\LoadUserData;
+use Symfony\Component\BrowserKit\Client;
 
 class LoginControllerTest extends WebTestCase
 {
+    /** @var Client */
+    private $client;
+
+    /** @var  LoadUserData */
+    private $loadUser;
+
+    private $em;
+
+    public function setUp()
+    {
+        $this->client = static::createClient();
+    }
+
     public function testRedirect()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/');
-        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
-        $this->assertContains('Redirecting to', $client->getResponse()->getContent());
-        $this->assertEquals(Response::HTTP_FOUND, $client->getResponse()->getStatusCode());
+        $this->client->request('GET', '/');
+        $this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/login'));
+        $this->assertContains('Redirecting to', $this->client->getResponse()->getContent());
+        $this->assertEquals(Response::HTTP_FOUND, $this->client->getResponse()->getStatusCode());
     }
 
     public function testLoginPageLoaded()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
-        $this->assertTrue($client->getResponse()->isSuccessful());
+        $crawler = $this->client->request('GET', '/login');
+        $this->assertTrue($this->client->getResponse()->isSuccessful());
         $this->assertGreaterThan(4, $crawler->filter('input')->count());
     }
 
     public function testLoginFormPass()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
+        $this->em = $this->client->getContainer()->get('doctrine')->getManager();
+        $this->loadUser = new LoadUserData();
+        $this->loadUser->load($this->em);
+
+        $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('_submit')->form();
-        $client->submit($form, ['_username' => 'sysadmin', '_password' => 'sysadmin']);
-        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/'));
+        $this->client->submit($form, ['_username' => $this->loadUser->getUserName(), '_password' => $this->loadUser->getUserPass()]);
+        $this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/'));
+
+        $this->loadUser->removeUser($this->em);
     }
 
     public function testLoginFormFail()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/login');
+        $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('_submit')->form();
-        $client->submit($form, ['_username' => 'wtf', '_password' => 'wtf']);
-        $this->assertTrue($client->getResponse()->isRedirect('http://localhost/login'));
+        $this->client->submit($form, ['_username' => 'wtf', '_password' => 'wtf']);
+        $this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/login'));
     }
 }
