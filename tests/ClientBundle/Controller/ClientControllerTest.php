@@ -15,7 +15,6 @@ class ClientControllerTest extends WebTestCase
     {
         $client = static::createClient();
         $crawler = $client->request('GET', '/');
-        $client->getResponse()->isRedirect();
-        $this->assertTrue($client->getResponse()->isRedirect('login'));
+        $this->assertTrue($client->getResponse()->isRedirect());
     }
 }
