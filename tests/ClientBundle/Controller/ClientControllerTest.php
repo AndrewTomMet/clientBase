@@ -62,7 +62,9 @@ class ClientControllerTest extends WebTestCase
         $form['client_form[birthday][year]'] = 2000;
 
         $form['client_form[description]'] = 'some description';
+        //todo add category fixture
         $form['client_form[categories]']->setValue(1);
+        //todo add language fixture
         $form['client_form[language]']->setValue(2);
         $this->client->submit($form);
 
