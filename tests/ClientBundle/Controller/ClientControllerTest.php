@@ -5,6 +5,7 @@ namespace tests\ClientBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpFoundation\Response;
 
 class ClientControllerTest extends WebTestCase
 {
@@ -33,8 +34,6 @@ class ClientControllerTest extends WebTestCase
         $this->crawler = $this->client->request('GET', '/client_add');
         $this->assertCount(0, $this->crawler->selectButton('BtnAddClient'));
         $this->assertEquals('http://localhost/client_add', $this->crawler->getBaseHref());
-
-       // $button = $this->crawler->selectButton('BtnAddClient')->eq(0);
     }
 
     public function testAddClientFail()
@@ -46,12 +45,13 @@ class ClientControllerTest extends WebTestCase
         $form['client_form[surname]'] = 'testSurName';
 
         $form['client_form[birthday][day]'] = 25;
-        $form['client_form[birthday][month]'] = 11;
+        $form['client_form[birthday][month]'] = 13;
         $form['client_form[birthday][year]'] = 2000;
 
         $form['client_form[description]'] = 'some description';
         $form['client_form[categories]'] ->setValue(1);
         $form['client_form[language]'] ->setValue(2);
         $this->client->submit($form);
+        $this->assertEquals(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
     }
 }
