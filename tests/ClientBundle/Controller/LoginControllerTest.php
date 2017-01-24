@@ -15,6 +15,9 @@ class LoginControllerTest extends WebTestCase
     /** @var  LoadUserData */
     private $loadUser;
 
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
     private $em;
 
     public function setUp()
