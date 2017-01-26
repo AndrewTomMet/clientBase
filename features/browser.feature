@@ -39,3 +39,4 @@ Feature: browser
     And I fill in "_password" with "sysadmin"
     And I press "_submit"
     Then I should be on "/admin/dashboard"
+

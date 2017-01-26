@@ -17,7 +17,7 @@ before_script:
   - cp behat.yml.dist behat.yml
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
-  - php bin/console doctrine:fixtures:load --env=test
+  - php bin/console doctrine:fixtures:load -n --env=test
   - vendor/bin/phpcs --config-set installed_paths vendor/escapestudios/symfony2-coding-standard
   - php bin/console server:start
 
