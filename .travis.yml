@@ -18,6 +18,7 @@ before_script:
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - vendor/bin/phpcs --config-set installed_paths vendor/escapestudios/symfony2-coding-standard
+  - vendor/bin/behat --init
 
 script:
   - vendor/bin/phpcs --standard=Symfony2 -n src
