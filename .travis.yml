@@ -13,7 +13,7 @@ install:
   - composer install
 
 before_script:
-  - cp app/config/parameters.yml.dist app/config/parameters.yml
+  - cp app/config/parameters_test.yml.dist app/config/parameters_test.yml
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - vendor/bin/phpcs --config-set installed_paths vendor/escapestudios/symfony2-coding-standard
