@@ -27,8 +27,6 @@ class AppKernel extends Kernel
 
             new FOS\UserBundle\FOSUserBundle(),
             new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
-            //new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
-
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -36,6 +34,8 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
+            $bundles[] = new Liip\FunctionalTestBundle\LiipFunctionalTestBundle();
         }
 
         return $bundles;

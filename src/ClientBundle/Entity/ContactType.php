@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ContactType
 {
-    /**
+     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
