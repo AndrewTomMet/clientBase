@@ -2,6 +2,5 @@ default:
     extensions:
         Behat\MinkExtension:
             base_url: http://localhost/app_dev.php
-            browser_name: chrome
             goutte: ~
             selenium2: ~
