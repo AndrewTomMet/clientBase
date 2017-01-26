@@ -36,8 +36,6 @@ class LoadUserData implements FixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $this->removeUser($manager);
-
         $userAdmin = new User();
         $userAdmin->setUsername($this->userName);
         $userAdmin->setPlainPassword($this->userPass);
@@ -47,17 +45,5 @@ class LoadUserData implements FixtureInterface
 
         $manager->persist($userAdmin);
         $manager->flush();
-    }
-
-    /**
-     * @param ObjectManager $manager
-     */
-    public function removeUser(ObjectManager $manager)
-    {
-        $user = $manager->getRepository('ClientBundle:User')->findOneBy(['username' => $this->userName]);
-        if (!empty($user)) {
-            $manager->remove($user);
-            $manager->flush();
-        }
     }
 }

@@ -2,29 +2,21 @@
 
 namespace tests\ClientBundle\Repository;
 
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use ClientBundle\DataFixtures\ORM\LoadContactType;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 
-class ContactTypeRepositoryTest extends KernelTestCase
+class ContactTypeRepositoryTest extends WebTestCase
 {
     /**
      * @var \Doctrine\ORM\EntityManager
      */
     private $em;
 
-   /** @var LoadContactType*/
-    private $loadContactType;
-
     /**
      * {@inheritDoc}
      */
     protected function setUp()
     {
-        self::bootKernel();
-
-        $this->em = static::$kernel->getContainer()
-            ->get('doctrine')
-            ->getManager();
+        $this->em = $this->getContainer()->get('doctrine')->getManager();
     }
 
     /**
@@ -33,16 +25,11 @@ class ContactTypeRepositoryTest extends KernelTestCase
     protected function tearDown()
     {
         parent::tearDown();
-        $this->loadContactType->removeContactType($this->em);
-        $this->em->close();
-        $this->em = null;
     }
 
     public function testGetAllIdArray()
     {
-        $this->loadContactType = new LoadContactType();
-        $this->loadContactType->load($this->em);
-
+        $this->loadFixtures(['ClientBundle\DataFixtures\ORM\LoadContactType']);
         $idArray = $this->em->getRepository('ClientBundle:ContactType')->getAllIds();
         $this->assertGreaterThan(0, count($idArray));
     }

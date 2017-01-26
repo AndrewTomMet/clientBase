@@ -2,37 +2,29 @@
 
 namespace tests\ClientBundle;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Client;
-use ClientBundle\DataFixtures\ORM\LoadUserData;
 
 class ApplicationAvailabilityFunctionalTest extends WebTestCase
 {
     /** @var Client */
     private $client = null;
-
-    /** @var  LoadUserData */
-    private $loadUser;
-    /**
-     * @var \Doctrine\ORM\EntityManager
-     */
-    private $em;
+    private $userName = 'testadmin';
+    private $userPass = 'testpass';
 
     public function setUp()
     {
-        $this->client = static::createClient();
-
-        $this->em = $this->client->getContainer()->get('doctrine')->getManager();
-        $this->loadUser = new LoadUserData();
-        $this->loadUser->load($this->em);
+        $this->client = $this->createClient();
+        $this->loadFixtures(['ClientBundle\DataFixtures\ORM\LoadUserData']);
 
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('_submit')->form();
-        $this->client->submit($form, ['_username' => $this->loadUser->getUserName(), '_password' => $this->loadUser->getUserPass()]);
+        $this->client->submit($form, ['_username' => $this->userName, '_password' => $this->userPass]);
     }
 
     /**
      * @dataProvider urlProvider
+     * @param string $url
      */
     public function testPageIsSuccessful($url)
     {
@@ -62,8 +54,5 @@ class ApplicationAvailabilityFunctionalTest extends WebTestCase
     protected function tearDown()
     {
         parent::tearDown();
-        $this->loadUser->removeUser($this->em);
-        $this->em->close();
-        $this->em = null;
     }
 }

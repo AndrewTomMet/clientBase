@@ -17,14 +17,6 @@ class LoadContactType implements FixtureInterface
     private $contactTypeName = 'testContactTypeName';
 
     /**
-     * @return string
-     */
-    public function getContactTypeName()
-    {
-        return $this->contactTypeName;
-    }
-
-    /**
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
@@ -33,17 +25,5 @@ class LoadContactType implements FixtureInterface
         $contactType->setName($this->contactTypeName);
         $manager->persist($contactType);
         $manager->flush();
-    }
-
-    /**
-     * @param ObjectManager $manager
-     */
-    public function removeContactType(ObjectManager $manager)
-    {
-        $contactType = $manager->getRepository('ClientBundle:ContactType')->findOneBy(['name' => $this->contactTypeName]);
-        if (!empty($contactType)) {
-            $manager->remove($contactType);
-            $manager->flush();
-        }
     }
 }

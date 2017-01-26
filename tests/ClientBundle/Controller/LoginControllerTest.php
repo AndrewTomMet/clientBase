@@ -2,9 +2,8 @@
 
 namespace tests\ClientBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
-use ClientBundle\DataFixtures\ORM\LoadUserData;
 use Symfony\Component\BrowserKit\Client;
 
 class LoginControllerTest extends WebTestCase
@@ -12,17 +11,13 @@ class LoginControllerTest extends WebTestCase
     /** @var Client */
     private $client;
 
-    /** @var  LoadUserData */
-    private $loadUser;
-
-    /**
-     * @var \Doctrine\ORM\EntityManager
-     */
-    private $em;
+    private $userName = 'testadmin';
+    private $userPass = 'testpass';
 
     public function setUp()
     {
-        $this->client = static::createClient();
+        $this->client = $this->createClient();
+        $this->loadFixtures(['ClientBundle\DataFixtures\ORM\LoadUserData']);
     }
 
     public function testRedirect()
@@ -42,16 +37,10 @@ class LoginControllerTest extends WebTestCase
 
     public function testLoginFormPass()
     {
-        $this->em = $this->client->getContainer()->get('doctrine')->getManager();
-        $this->loadUser = new LoadUserData();
-        $this->loadUser->load($this->em);
-
         $crawler = $this->client->request('GET', '/login');
         $form = $crawler->selectButton('_submit')->form();
-        $this->client->submit($form, ['_username' => $this->loadUser->getUserName(), '_password' => $this->loadUser->getUserPass()]);
+        $this->client->submit($form, ['_username' => $this->userName, '_password' => $this->userPass]);
         $this->assertTrue($this->client->getResponse()->isRedirect('http://localhost/'));
-
-        $this->loadUser->removeUser($this->em);
     }
 
     public function testLoginFormFail()
