@@ -16,14 +16,6 @@ class LoadUserData implements FixtureInterface
     const TESTUSERPASS = 'sysadmin';
 
     /**
-     * @return string
-     */
-    public function getUserPass()
-    {
-        return $this->userPass;
-    }
-
-    /**
      * @param ObjectManager $manager
      */
     public function load(ObjectManager $manager)
