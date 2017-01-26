@@ -31,3 +31,11 @@ Feature: browser
     And I fill in "_password" with "sysadmin"
     And I press "_submit"
     Then I should be on "/"
+
+  Scenario: Navigate to admin
+    Given I am on "/admin"
+    Then I should be on "/login"
+    When I fill in "_username" with "sysadmin"
+    And I fill in "_password" with "sysadmin"
+    And I press "_submit"
+    Then I should be on "/admin"
