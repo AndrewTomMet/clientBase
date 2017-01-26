@@ -1,5 +1,6 @@
 /app/config/parameters.yml
 /app/config/parameters_test.yml
+behat.yml
 /build/
 /phpunit.xml
 /var/*
