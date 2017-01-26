@@ -12,8 +12,8 @@ use ClientBundle\Entity\User;
 class LoadUserData implements FixtureInterface
 {
 
-    private $userName = 'testadmin';
-    private $userPass = 'testpass';
+    private $userName = 'sysadmin';
+    private $userPass = 'sysadmin';
 
     /**
      * @return string
