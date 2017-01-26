@@ -18,12 +18,16 @@ before_script:
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
   - vendor/bin/phpcs --config-set installed_paths vendor/escapestudios/symfony2-coding-standard
-  - vendor/bin/behat --init
+  - php bin/console server:start
+
 
 script:
   - vendor/bin/phpcs --standard=Symfony2 -n src
   - vendor/bin/phpunit tests/ClientBundle --coverage-clover=coverage.xml
   - vendor/bin/behat features/browser.feature
+
+after_script:
+  - php bin/console server:stop
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
