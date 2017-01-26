@@ -5,6 +5,7 @@ namespace tests\ClientBundle\Controller;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Client;
 use Symfony\Component\DomCrawler\Crawler;
+use ClientBundle\DataFixtures\ORM\LoadUserData;
 
 class ClientControllerTest extends WebTestCase
 {
@@ -14,8 +15,8 @@ class ClientControllerTest extends WebTestCase
     /** @var Crawler */
     private $crawler;
 
-    private $userName = 'testadmin';
-    private $userPass = 'testpass';
+    private $userName = LoadUserData::TESTUSERNAME;
+    private $userPass = LoadUserData::TESTUSERPASS;
 
     public function setUp()
     {

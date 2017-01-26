@@ -5,14 +5,15 @@ namespace tests\ClientBundle\Controller;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\BrowserKit\Client;
+use ClientBundle\DataFixtures\ORM\LoadUserData;
 
 class LoginControllerTest extends WebTestCase
 {
     /** @var Client */
     private $client;
 
-    private $userName = 'testadmin';
-    private $userPass = 'testpass';
+    private $userName = LoadUserData::TESTUSERNAME;
+    private $userPass = LoadUserData::TESTUSERPASS;
 
     public function setUp()
     {

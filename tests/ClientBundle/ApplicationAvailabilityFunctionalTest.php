@@ -4,13 +4,14 @@ namespace tests\ClientBundle;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\Client;
+use ClientBundle\DataFixtures\ORM\LoadUserData;
 
 class ApplicationAvailabilityFunctionalTest extends WebTestCase
 {
     /** @var Client */
     private $client = null;
-    private $userName = 'testadmin';
-    private $userPass = 'testpass';
+    private $userName = LoadUserData::TESTUSERNAME;
+    private $userPass = LoadUserData::TESTUSERPASS;
 
     public function setUp()
     {

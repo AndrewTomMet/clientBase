@@ -12,16 +12,8 @@ use ClientBundle\Entity\User;
 class LoadUserData implements FixtureInterface
 {
 
-    private $userName = 'sysadmin';
-    private $userPass = 'sysadmin';
-
-    /**
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->userName;
-    }
+    const TESTUSERNAME = 'sysadmin';
+    const TESTUSERPASS = 'sysadmin';
 
     /**
      * @return string
@@ -37,8 +29,8 @@ class LoadUserData implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $userAdmin = new User();
-        $userAdmin->setUsername($this->userName);
-        $userAdmin->setPlainPassword($this->userPass);
+        $userAdmin->setUsername($this::TESTUSERNAME);
+        $userAdmin->setPlainPassword($this::TESTUSERPASS);
         $userAdmin->setEmail('test@email.ua');
         $userAdmin->setSuperAdmin(true);
         $userAdmin->setEnabled(true);
