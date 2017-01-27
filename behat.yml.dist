@@ -1,5 +1,13 @@
 default:
+    autoload:
+        '': %paths.base%/features/bootstrap
+
+    suites:
+        projects:
+            contexts:
+                - ClientBundle\Behat\BaseContext
     extensions:
+        Behat\Symfony2Extension: ~
         Behat\MinkExtension:
             base_url: http://127.0.0.1:8000/app_dev.php
             goutte: ~

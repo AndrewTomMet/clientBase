@@ -14,6 +14,3 @@ services:
             - "@client.validator.repository"
         tags:
             - { name: validator.constraint_validator }
-
-
-
