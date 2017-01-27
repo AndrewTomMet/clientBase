@@ -9,7 +9,6 @@ use ClientBundle\Validator\Constraints as ClientAssert;
 
 /**
  * Class Client
- * @ClientAssert\ContainsCheckHaveAllContactTypes
  * @ORM\Entity(repositoryClass="ClientBundle\Repository\ClientRepository")
  * @ORM\Table(name="client")
  * @ORM\HasLifecycleCallbacks
@@ -36,11 +35,13 @@ class Client
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\Date()
      */
     private $birthday;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\Date()
      */
     private $createdAt;
 

@@ -43,7 +43,7 @@ class ClientController extends Controller
         if (!$client) {
             throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $id));
         } else {
-            $form = $this->createForm(ClientForm::class, $client, array('id' => $client->getId()));
+            $form = $this->createForm(ClientForm::class, $client, ['id' => $client->getId()]);
             // перенести в вьюв
             if ($this->isGranted('ROLE_ADMIN')) {
                 $form->add('delete', SubmitType::class);
@@ -55,7 +55,7 @@ class ClientController extends Controller
                 $client = $form->getData();
 
                 if ($this->isGranted('ROLE_ADMIN') && $form->get('delete')->isClicked()) {
-                    return $this->redirectToRoute('client_del', array('id' => $client->getId()));
+                    return $this->redirectToRoute('client_del', ['id' => $client->getId()]);
                 } elseif ($form->get('addcontact')->isClicked()) {
                     $contact = new Contact();
                     $clientForm = $request->request->get('client_form');
@@ -68,7 +68,6 @@ class ClientController extends Controller
                         $contact->setMean($clientForm['newmeancontact']);
                         $client->addContact($contact);
                         $em->persist($contact);
-                        $em->flush();
                     }
                 } else {
                     $em->flush();
@@ -137,7 +136,6 @@ class ClientController extends Controller
             if ($form->get('addcontact')->isClicked()) {
                 $contact = new Contact();
                 $clientForm = $request->request->get('client_form');
-
                 $contactType = $em->getRepository('ClientBundle:ContactType')->find($clientForm['newtypecontact']);
                 if (!$contactType) {
                     throw $this->createNotFoundException(sprintf('не знайдений об\'єкт з id : %s', $clientForm['newtypecontact']));

@@ -41,9 +41,8 @@ abstract class AbstractDefaultContext extends MinkContext implements Context, Ke
         $loader = new Loader();
         $loader->loadFromDirectory($this->kernel->getRootDir().'/../src/ClientBundle/DataFixtures/ORM/');
 
-        /** @var $em \Doctrine\ORM\EntityManager */
-        $em = $this->getService('doctrine.orm.default_entity_manager');
-        $connection = $em->getConnection();
+        $connection = $this->getContainer()->get('doctrine')->getConnection();
+        $em = $this->getContainer()->get('doctrine.orm.entity_manager');
 
         $connection->beginTransaction();
         $connection->query('SET FOREIGN_KEY_CHECKS=0');
