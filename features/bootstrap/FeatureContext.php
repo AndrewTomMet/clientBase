@@ -4,11 +4,12 @@ use Behat\MinkExtension\Context\MinkContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 use Behat\Behat\Tester\Exception\PendingException;
+use Behat\Behat\Context\Context;
 
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext extends MinkContext
+class FeatureContext implements Context
 {
     /**
      * Initializes context.
