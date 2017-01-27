@@ -18,13 +18,12 @@ before_script:
   - php bin/console server:start
   - php bin/console doctrine:database:create --env=test
   - php bin/console doctrine:schema:create --env=test
-  - php bin/console doctrine:fixtures:load -n --env=test
   - vendor/bin/phpcs --config-set installed_paths vendor/escapestudios/symfony2-coding-standard
   
 script:
-  - vendor/bin/behat features/browser.feature
   - vendor/bin/phpcs --standard=Symfony2 -n src
   - vendor/bin/phpunit tests/ClientBundle --coverage-clover=coverage.xml
+  - vendor/bin/behat features/browser.feature
   
 after_script:
   - php bin/console server:stop
